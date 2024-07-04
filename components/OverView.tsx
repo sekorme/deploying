@@ -30,7 +30,7 @@ export function OverView() {
       <TabsContent value="presidential">
              <Card>
           <CardHeader>
-            <CardTitle className="text-green-600">Presidential Election Results</CardTitle>
+            <CardTitle className="text-green-600">Presidential d Election Results</CardTitle>
             <CardDescription >
               overview of the presidential now Now election results
             </CardDescription>
