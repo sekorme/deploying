@@ -3,40 +3,34 @@ import { FormField, FormLabel, FormControl, FormMessage } from './ui/form'
 import { Input } from './ui/input'
 import {z} from "zod"
 import {Control, FieldPath} from "react-hook-form"
-import { authFormSchema } from '@/lib/utils'
+import { authFormSchema, collateFormSchema } from '@/lib/utils'
 
 
-const formSchema = authFormSchema('sign-up')
+const formSchema = collateFormSchema('collate')
 
 interface CustomInput{
-    control: Control<z.infer<typeof formSchema>>,
-    name: FieldPath<z.infer<typeof formSchema>> ,
+    control?: Control<z.infer<typeof formSchema>>,
+    name: string | number
     label?: string,
     placeholder?: string
+    type?: string
+    read?:true | false
 }
 
 
-const CustomInput : React.FC <CustomInput> = ({control, name, label, placeholder}) => {
+const CustomInput : React.FC <CustomInput> = ({control,type, name, read, label, placeholder}) => {
   return (
-      <FormField
-          control={control}
-          name={name}
-          render={({ field }) => (
-           <div className="flex flex-col gap-1.5">
-               <FormLabel className="text-xl 4 w-full max-w-[280px] font-medium text-gray-700 ">
-                    {label}
-               </FormLabel>
-               <div className="flex w-full flex-col">
-                  <FormControl>
-                    <Input placeholder={placeholder} className="input-class" {...field} type={name === 'password' ? 'password' : 'text'}/>
-                  </FormControl>
-                  <FormMessage className="form-message mt-2" />
+      
+             
+               <div className="flex W-[50px] flex-col">
+               
+                    <Input placeholder={placeholder} className="input-class" type={type} readOnly ={read}/>
+               
+                 
 
                   
                </div>
-           </div>
-          )}
-        />
+       
   )
 }
 

@@ -18,6 +18,7 @@ import {
 import DoughnutChart from "./DoughnutChart"
 import DataCard from "./DataCard"
 import CandidateCard from "./CandidateCard"
+import { allRejected, totalCppVotes, totalNdcVotes, totalNppVotes, totalVotes,countRejectedBallots } from "@/constants"
 
 export function OverView() {
   return (
@@ -42,18 +43,18 @@ export function OverView() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center justify-center gap-1">
-                <DataCard title="Total Vote" desc="Total Votes Cast" icon="/user-plus.svg" value="4670" cl="bg-green-700 " tl="text-white" sp="text-white"/>
-                <DataCard title="Rejected" desc="Reject Ballots" icon="/ban.svg" value="40" cl="bg-red-600" tl="text-white" sp="text-white"/>
+                <DataCard title="Total Vote" desc="Total Votes Cast" icon="/user-plus.svg" value={totalVotes} cl="bg-green-700 " tl="text-white" sp="text-white"/>
+                <DataCard title="Rejected" desc="Reject Ballots" icon="/ban.svg" value="20" cl="bg-red-600" tl="text-white" sp="text-white"/>
                 <DataCard title="Turned Out" desc="No. of voters" icon="/user-round-check.svg" value="40" tl="text-green-600" />
-                <DataCard title="P. Stations" desc="No. of Polling Stations" icon="/map-pinned.svg" value="120/180" cl="bg-gray-800" tl="text-white" sp="text-white"/>
+                <DataCard title="P. Stations" desc="No. of Polling Stations" icon="/map-pinned.svg" value={countRejectedBallots +  '/' +  allRejected }  cl="bg-gray-800" tl="text-white" sp="text-white"/>
               </div>
             </div>
           </CardContent>
           <CardFooter>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mt-5 gap-4">
-              <CandidateCard image="jm8.jpeg" name="NDC Candidate"/>
-              <CandidateCard image="bw8.jpg" name="NPP Candidate"/>
-              <CandidateCard image="chd8.jpg" name="CPP Candidate"/>
+              <CandidateCard image="jm8.jpeg" name="NDC Candidate" pvotes={totalNdcVotes}/>
+              <CandidateCard image="bw8.jpg" name="NPP Candidate" pvotes={totalNppVotes}/>
+              <CandidateCard image="chd8.jpg" name="CPP Candidate" pvotes={totalCppVotes}/>
             </div>
           </CardFooter>
         </Card>
@@ -73,18 +74,18 @@ export function OverView() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center justify-center gap-1">
-                <DataCard title="Total Vote" desc="Total Votes Cast" icon="/user-plus.svg" value="4670" cl="bg-green-700 " tl="text-white" sp="text-white"/>
-                <DataCard title="Rejected" desc="Reject Ballots" icon="/ban.svg" value="40" cl="bg-red-600" tl="text-white" sp="text-white"/>
+                <DataCard title="Total Vote" desc="Total Votes Cast" icon="/user-plus.svg" value={totalVotes} cl="bg-green-700 " tl="text-white" sp="text-white"/>
+                <DataCard title="Rejected" desc="Reject Ballots" icon="/ban.svg" value="20" cl="bg-red-600" tl="text-white" sp="text-white"/>
                 <DataCard title="Turned Out" desc="No. of voters" icon="/user-round-check.svg" value="40" tl="text-green-600" />
-                <DataCard title="P. Stations" desc="No. of Polling Stations" icon="/map-pinned.svg" value="120/180" cl="bg-gray-800" tl="text-white" sp="text-white"/>
+                <DataCard title="P. Stations" desc="No. of Polling Stations" icon="/map-pinned.svg" value={countRejectedBallots +"/" + allRejected} cl="bg-gray-800" tl="text-white" sp="text-white"/>
               </div>
             </div>
           </CardContent>
           <CardFooter>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mt-5 gap-4">
-              <CandidateCard image="tina.jpg" name="NDC Candidate"/>
-              <CandidateCard image="chris.jpg" name="NPP Candidate"/>
-              <CandidateCard image="tina.jpg" name="CPP Candidate"/>
+              <CandidateCard image="tina.jpg" name="NDC Candidate" pvotes={totalNdcVotes}/>
+              <CandidateCard image="chris.jpg" name="NPP Candidate" pvotes={totalNppVotes}/>
+              <CandidateCard image="tina.jpg" name="CPP Candidate" pvotes={totalCppVotes}/>
             </div>
           </CardFooter>
         </Card>

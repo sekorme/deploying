@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 interface DataCardProps{
     title?: string;
-    value?: string;
+    value?: number | string;
     icon: string;
     footer?: string;
     cl?:string

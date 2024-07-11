@@ -17,3 +17,16 @@ export const authFormSchema = (type : string) => z.object({
  
   
 })
+
+
+
+export const collateFormSchema = (type: string) => z.object({
+  pollingStation: z.string().min(3),
+  ndcVotes: z.number().int(),
+  nppVotes: z.number().int(),
+  cppVotes: z.number().int(),
+  totalVote: z.number().int(),
+  rejectedBallot: z.number().int(),
+  turnedOut: z.number().int(),
+ 
+})

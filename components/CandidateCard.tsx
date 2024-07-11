@@ -4,8 +4,9 @@ import Image from "next/image"
 interface Emage{
     image?: string
     name?:string
+    pvotes?: number|string
 }
-const CandidateCard = ({image, name}:Emage) => {
+const CandidateCard = ({image,pvotes, name}:Emage) => {
   return (
     <div>
         <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full ">
@@ -25,7 +26,7 @@ const CandidateCard = ({image, name}:Emage) => {
       <p
         className="flex items-center justify-center text-xl gap-1.5 font-sans  font-bold p-2 bg-gray-300 rounded-xl shadow-2xl leading-relaxed text-blue-gray-900 antialiased">
        <Image src="/ballot-box.png" width={40} height={40} alt="voting"/>
-        5564
+        {pvotes}
       </p>
     </div>
  

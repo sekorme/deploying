@@ -1,4 +1,5 @@
 'use client'
+import { totalCppVotes, totalNdcVotes, totalNppVotes } from "@/constants";
 import {Chart as ChartJs, ArcElement, Tooltip, Legend} from "chart.js"
 import { Doughnut} from "react-chartjs-2"
 
@@ -11,7 +12,7 @@ ChartJs.register(ArcElement, Tooltip, Legend);
 const DoughnutChart = () => {
     const data ={
         datasets:[
-            { label: 'Banks', data:[3213, 9839,9898], backgroundColor:['#FF6384', '#36A2EB', '#FFCE56']}
+            { label: 'Banks', data:[totalNdcVotes, totalNppVotes, totalCppVotes], backgroundColor:['#FF6384', '#36A2EB', '#FFCE56']}
         ],
         labels:['NDC', 'NPP', 'CPP']
     }

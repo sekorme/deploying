@@ -1,0 +1,5 @@
+ <div className="flex justify-between items-center mt-4">
+          <Button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>Previous</Button>
+          <span>Page {currentPage} of {totalPages}</span>
+          <Button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)}>Next</Button>
+</div>
