@@ -77,20 +77,20 @@ const LoginInterface = ({type}:{type:string}) => {
                 type === 'sign-up' &&(
                   <>
                    <div className="flex gap-2">
-                     <CustomInput control ={form.control}
+                     <CustomInput 
                     name="firstName"
                     label="First Name"
                     placeholder ="John"
                   />
 
-                   <CustomInput control ={form.control}
+                   <CustomInput 
                      name="lastName"
                      label="Last Name"
                      placeholder ="Doe"
                     />
                    </div>
 
-                    <CustomInput control ={form.control}
+                    <CustomInput 
                       name="phone"
                       label="Phone"
                       placeholder ="123-454-3343"
@@ -99,13 +99,13 @@ const LoginInterface = ({type}:{type:string}) => {
                 )
               }
 
-            <CustomInput control ={form.control}
+            <CustomInput 
              name="email"
              label="User Name"
              placeholder ="example@user.com"
             />
 
-              <CustomInput control ={form.control}
+              <CustomInput 
              name="password"
              label="Password"
              placeholder ="*****"
