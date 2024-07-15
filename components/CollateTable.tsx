@@ -1,6 +1,6 @@
 "use client"
-import React, { useMemo, useState } from 'react'
-import { dataCollate, tableHeader } from '@/constants'
+import React, { useMemo, useState, useEffect } from 'react'
+import { dataCollate, tableHeader, townNames } from '@/constants'
 import CustomInput from './CustomInput';
 import { useForm } from 'react-hook-form';
 import {number, z} from "zod"
@@ -21,10 +21,13 @@ const CollateTable = ({type2}:{type2:string}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; 
 
+
+ 
+
   const filteredData = useMemo(() => {
     return dataCollate.filter(item => {
-      const matchesSearch = item.pollingStation.pollingStationName.toLowerCase().includes(searchTerm.toLowerCase()) || item.email.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesFilter = filterStatus ? item.pollingStation.pollingStationName === filterStatus : true;
+      const matchesSearch = item.pollingStation.pollingStationName.toLowerCase().includes(searchTerm.toLowerCase()) || item.town.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesFilter = filterStatus ? item.town === filterStatus : true;
       return matchesSearch && matchesFilter;
     });
   }, [searchTerm, filterStatus, dataCollate]);
@@ -55,22 +58,25 @@ const lastItemIndex = currentPage * itemsPerPage;
     <Card className=" bg-white">
   <div className="flex items-center justify-between mt-10 p-3">
        <Input
-        className="w-[60%] md:w-[40%] shadow-2xl rounded-xl"
+        className="w-[60%] md:w-[40%] border-rose-700 shadow-2xl focus:ring-0 rounded-xl"
         type="text"
         placeholder="Search by Polling Station "
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
+    <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
         <option value="">All</option>
-        <option value="failed">Failed</option>
-        <option value="success">Success</option>
+      {townNames.map((item) => (
+        <option key={item.town}>{item.town}</option>
+      ))}
       </select>
+
+  
 
   </div>
     <div
   className="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md bg-clip-border rounded-xl mt-5 p-3">
-  <table className="w-full text-center table-auto min-w-max ">
+  <table className="w-full  table-auto min-w-max ">
     <thead>
      {
          <tr>

@@ -43,10 +43,10 @@ export const dataCollate = [
   {
     id: "1",
     amount: 900,
-    status: "failed",
+    town: "Swedru",
     email: "carmella@hotmail.com",
     pollingStation: {
-      pollingStationName: "Otinkorang",
+      pollingStationName: "Min of Agric Swd - B130101",
       ndcVotes: 80,
       nppVotes: 10,
       cppVotes:9,
@@ -58,10 +58,10 @@ export const dataCollate = [
   {
     id: "2",
     amount: 900,
-    status: "failed",
+    town: "Swedru",
     email: "carmella@hotmail.com",
     pollingStation: {
-      pollingStationName: "Nyakrom",
+      pollingStationName: "Royal Gate Fire Chapel Swd - B130102",
       ndcVotes: 210,
       nppVotes: 110,
       cppVotes:110,
@@ -73,10 +73,10 @@ export const dataCollate = [
   {
     id: "3",
     amount: 900,
-    status: "failed",
+    town: "Nyakrom",
     email: "carmella@hotmail.com",
     pollingStation: {
-      pollingStationName: "Odumase",
+      pollingStationName: "Meth JHS Swd - B130103",
       ndcVotes: 500,
       nppVotes: 570,
       cppVotes:0,
@@ -88,10 +88,10 @@ export const dataCollate = [
   {
     id: "4",
     amount: 900,
-    status: "failed",
+    town: "Nyakrom",
     email: "carmella@hotmail.com",
     pollingStation: {
-      pollingStationName: "Swedru",
+      pollingStationName: "Meth Prim Sch Swd - B130104",
       ndcVotes: 100,
       nppVotes: 90,
       cppVotes:110,
@@ -103,10 +103,10 @@ export const dataCollate = [
    {
     id: "5",
     amount: 1200,
-    status: "success",
+    town: "Abodom",
     email: "julian@example.com",
     pollingStation: {
-      pollingStationName: "Kumasi",
+      pollingStationName: "Fire Service Station Swd - B130105",
       ndcVotes:320,
       nppVotes: 190,
       cppVotes:40,
@@ -118,10 +118,10 @@ export const dataCollate = [
   {
     id: "6",
     amount: 800,
-    status: "pending",
+    town: "Kukurantumi",
     email: "sophia@example.net",
     pollingStation: {
-      pollingStationName: "Tamale",
+      pollingStationName: "Town Hall Swd - B130201",
       ndcVotes: 210,
       nppVotes: 100,
       cppVotes:10,
@@ -133,10 +133,10 @@ export const dataCollate = [
   {
     id: "7",
     amount: 950,
-    status: "failed",
+    town: "Nkum",
     email: "michael@example.org",
     pollingStation: {
-      pollingStationName: "Accra",
+      pollingStationName: "High Court Swd - B130202",
       ndcVotes: 20,
       nppVotes: 10,
       cppVotes:20,
@@ -148,10 +148,10 @@ export const dataCollate = [
   {
     id: "8",
     amount: 1100,
-    status: "success",
+    town: "Nkum",
     email: "lucas@example.com",
     pollingStation: {
-      pollingStationName: "Sekondi",
+      pollingStationName: "Anglican Church Swd - B130203",
       ndcVotes: 10,
       nppVotes: 5,
       cppVotes:2,
@@ -163,10 +163,10 @@ export const dataCollate = [
   {
     id: "9",
     amount: 1050,
-    status: "pending",
+    town: "Nkum",
     email: "example9@example.com",
     pollingStation: {
-      pollingStationName: "Aflao",
+      pollingStationName: "OLD GES Office, Swd - B130204",
       ndcVotes: 30,
       nppVotes: 20,
       cppVotes: 5,
@@ -178,10 +178,10 @@ export const dataCollate = [
   {
     id: "10",
     amount: 980,
-    status: "failed",
+    town: "Swedru",
     email: "example10@example.com",
     pollingStation: {
-      pollingStationName: "Ho",
+      pollingStationName: "Solid Foundation Prep Sch Swd - B130205",
       ndcVotes: 45,
       nppVotes: 35,
       cppVotes: 10,
@@ -194,10 +194,10 @@ export const dataCollate = [
    {
     id: "11",
     amount: 1200,
-    status: "success",
+    town: "Swedru",
     email: "example20@example.com",
     pollingStation: {
-      pollingStationName: "Bolgatanga",
+      pollingStationName: "Police MTTU Office Swd 1 - B130206",
       ndcVotes: 50,
       nppVotes: 40,
       cppVotes: 15,
@@ -209,10 +209,10 @@ export const dataCollate = [
   {
     id: "12",
     amount: 1200,
-    status: "success",
+    town: "Abodom",
     email: "example20@example.com",
     pollingStation: {
-      pollingStationName: "Tema",
+      pollingStationName: "Police MTTU Office Swd 2 - B130207",
       ndcVotes: 50,
       nppVotes: 40,
       cppVotes: 15,
@@ -225,6 +225,23 @@ export const dataCollate = [
   },
 ];
 
+
+export const townNames = [
+  {
+    town: "Swedru"
+  },
+  {
+    town:"Abodom"
+  },{
+    town:"Nyakrom"
+  },
+  {
+    town:"Kukurantumi"
+  },
+  {
+    town: "Nkum"
+  }
+]
 
 export const tableHeader = [
     {
