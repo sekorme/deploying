@@ -47,7 +47,7 @@ const LoginInterface = ({type}:{type:string}) => {
         setIsLoading(true)
       if(type === "sign-up"){
          setIsLoading(true)
-        axios.post('/api/user',data)
+        axios.post('http://localhost:3000/api/user',data)
         .then(()=>{
           router.push('/dashboard')
         })
