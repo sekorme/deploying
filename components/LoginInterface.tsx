@@ -66,7 +66,7 @@ const LoginInterface = ({type}:{type:string}) => {
 
         if(callback?.ok){
            router.push('/dashboard')
-           toast.success("Access Granted - redirecting..")
+           toast.success("Access Granted - redirecting...")
            setIsLoading(false)
            
         }
