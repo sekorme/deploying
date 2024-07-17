@@ -41,10 +41,9 @@ export const sidebarLinks = [
 
 export const dataCollate = [
   {
-    id: "1",
-    amount: 900,
+   
     town: "Swedru",
-    email: "carmella@hotmail.com",
+  
     pollingStation: {
       pollingStationName: "Min of Agric Swd - B130101",
       ndcVotes: 80,
@@ -56,10 +55,9 @@ export const dataCollate = [
     }
   },
   {
-    id: "2",
-    amount: 900,
+
     town: "Swedru",
-    email: "carmella@hotmail.com",
+
     pollingStation: {
       pollingStationName: "Royal Gate Fire Chapel Swd - B130102",
       ndcVotes: 210,
@@ -71,10 +69,9 @@ export const dataCollate = [
     }
   },
   {
-    id: "3",
-    amount: 900,
+   
     town: "Nyakrom",
-    email: "carmella@hotmail.com",
+
     pollingStation: {
       pollingStationName: "Meth JHS Swd - B130103",
       ndcVotes: 500,
@@ -86,10 +83,9 @@ export const dataCollate = [
     }
   },
   {
-    id: "4",
-    amount: 900,
+  
     town: "Nyakrom",
-    email: "carmella@hotmail.com",
+  
     pollingStation: {
       pollingStationName: "Meth Prim Sch Swd - B130104",
       ndcVotes: 100,
@@ -101,10 +97,9 @@ export const dataCollate = [
     }
   },
    {
-    id: "5",
-    amount: 1200,
+    
     town: "Abodom",
-    email: "julian@example.com",
+   
     pollingStation: {
       pollingStationName: "Fire Service Station Swd - B130105",
       ndcVotes:320,
@@ -116,10 +111,8 @@ export const dataCollate = [
     }
   },
   {
-    id: "6",
-    amount: 800,
     town: "Kukurantumi",
-    email: "sophia@example.net",
+ 
     pollingStation: {
       pollingStationName: "Town Hall Swd - B130201",
       ndcVotes: 210,
@@ -131,10 +124,9 @@ export const dataCollate = [
     }
   },
   {
-    id: "7",
-    amount: 950,
+   
     town: "Nkum",
-    email: "michael@example.org",
+   
     pollingStation: {
       pollingStationName: "High Court Swd - B130202",
       ndcVotes: 20,
@@ -146,10 +138,9 @@ export const dataCollate = [
     }
   },
   {
-    id: "8",
-    amount: 1100,
+   
     town: "Nkum",
-    email: "lucas@example.com",
+
     pollingStation: {
       pollingStationName: "Anglican Church Swd - B130203",
       ndcVotes: 10,
@@ -161,10 +152,9 @@ export const dataCollate = [
     }
   },
   {
-    id: "9",
-    amount: 1050,
+   
     town: "Nkum",
-    email: "example9@example.com",
+
     pollingStation: {
       pollingStationName: "OLD GES Office, Swd - B130204",
       ndcVotes: 30,
@@ -176,10 +166,9 @@ export const dataCollate = [
     }
   },
   {
-    id: "10",
-    amount: 980,
+   
     town: "Swedru",
-    email: "example10@example.com",
+
     pollingStation: {
       pollingStationName: "Solid Foundation Prep Sch Swd - B130205",
       ndcVotes: 45,
@@ -192,10 +181,9 @@ export const dataCollate = [
     
   },
    {
-    id: "11",
-    amount: 1200,
+   
     town: "Swedru",
-    email: "example20@example.com",
+ 
     pollingStation: {
       pollingStationName: "Police MTTU Office Swd 1 - B130206",
       ndcVotes: 50,
@@ -207,10 +195,9 @@ export const dataCollate = [
     }
   },
   {
-    id: "12",
-    amount: 1200,
+  
     town: "Abodom",
-    email: "example20@example.com",
+ 
     pollingStation: {
       pollingStationName: "Police MTTU Office Swd 2 - B130207",
       ndcVotes: 50,

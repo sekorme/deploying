@@ -18,3 +18,15 @@ declare interface FooterProps {
   
   type?: 'mobile' | 'desktop'
 }
+
+type SignUpParams =  {
+  email: string
+  name: string
+  password: string
+  phone?: string
+}
+
+declare interface signInProps {
+  email: string;
+  password: string;
+}

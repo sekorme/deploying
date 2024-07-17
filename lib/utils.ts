@@ -11,8 +11,8 @@ export const authFormSchema = (type : string) => z.object({
   email: z.string().email(),
   password: z.string().min(8),
  
-  firstName: type=== "sign-in" ? z.string().optional() : z.string().min(3),
-  lastName:  type=== "sign-in" ? z.string().optional() :z.string().min(3),
+  name: type=== "sign-in" ? z.string().optional() : z.string().min(3),
+
   phone: type=== "sign-in" ? z.string().optional() : z.string().min(3).max(50),
  
   
@@ -30,3 +30,7 @@ export const collateFormSchema = (type: string) => z.object({
   turnedOut: z.number().int(),
  
 })
+
+
+
+export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));

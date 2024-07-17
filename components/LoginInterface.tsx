@@ -1,56 +1,93 @@
-
-
+'use client'
 import { Button } from "@/components/ui/button"
 import {
   Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+ } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { LockKeyhole, ShieldMinus } from "lucide-react"
 import Link from "next/link"
 import Image from 'next/image';
 
+import {z} from "zod"
 
-// src/app/signup/page.jsx
+import {useState } from "react"
 
-// previous imports ...
+import { authFormSchema } from "@/lib/utils"
+import { useRouter } from "next/navigation"
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 
-import { ID } from "node-appwrite";
-import { createAdminClient } from "../lib/server/appwrite"
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import axios from "axios"
+import {signIn} from "next-auth/react"
+import toast, { Toaster } from "react-hot-toast";
 
-async function signUpWithEmail(formData: any) {
-  "use server";
 
-  const email = formData.get("email");
-  const password = formData.get("password");
-  const name = formData.get("name");
+// Setting the input field parameters ...
 
-  const { account } = await createAdminClient();
+const LoginInterface = ({type}:{type:string}) => {
+   const router = useRouter()
+    const [isLoading, setIsLoading] = useState(false)
+ 
 
-  await account.create(ID.unique(), email, password);
-  const session = await account.createEmailPasswordSession(email, password);
+  const {
+    register,
+    handleSubmit,
+    formState:{
+      errors
+    }
+  }= useForm <FieldValues>({
+    defaultValues:{
+       username: '',
+       password: '',
+       name:'',
+       phone:''
+    } 
+  })
 
-  cookies().set("my-custom-session", session.secret, {
-    path: "/",
-    httpOnly: true,
-    sameSite: "strict",
-    secure: true,
-  });
+   const onSubmit: SubmitHandler<FieldValues> = (data) =>{
+        setIsLoading(true)
+      if(type === "sign-up"){
+         setIsLoading(true)
+        axios.post('/api/user',data)
+        .then(()=>{
+          router.push('/dashboard')
+        })
+        .catch((error)=>{console.log(error); toast.error("An error occured")})
+        .finally(()=>{
+          setIsLoading(false)
+        })
+      }
+     
+     if (type==="sign-in"){
+       signIn('credentials',{...data, redirect: false})
+      .then((
+        callback
+      )=>{
+       
 
-  redirect("/dashboard");
-}
+        if(callback?.ok){
+           router.push('/dashboard')
+           toast.success("Access Granted - redirecting..")
+           setIsLoading(false)
+           
+        }
+       
+        if(callback?.error){
+          toast.error(`something went wrong ${callback.error}`)
+          setIsLoading(false)
+        }
+        
+      })
+     }
+    }
+  
 
-// the SignUpPage component ...
+//Loging into account
 
-const LoginInterface = async({type}:{type:string}) => {
   return (
+
     <section className="flex min-h-screen w-full max-w-[420px] flex-col justify-center gap-5 py-10 md:gap-8 shadow-3xl">
-      <form action={signUpWithEmail}>
+      
+      
         <Card className="p-10 bg-white  shadow-2xl rounded-[10px] ">
           <header className="flex flex-col gap-5 md:gap-8 items-center">
             <Link className="flex cursor-pointer items-center gap-2 " href="/">
@@ -59,19 +96,51 @@ const LoginInterface = async({type}:{type:string}) => {
           </header>
           <div className="flex flex-col gap-8 mt-4">
             <Input 
-              name="email"
-              placeholder ="example@user.com"
+             {...register('username')}
+         
+             placeholder ="example@user.com"
+           
             />
             <Input 
-              name="password"
+             
+             type="password"
               placeholder ="*****"
-              type="password"
+              
+             {...register('password')}
+             
             />
-            <Button className="mt-5 rounded-xl gap-2" type="submit"> <LockKeyhole/>  Sign In</Button>
+            {
+              type === 'sign-up' &&(
+                <>
+                  <Input 
+        
+            
+              placeholder ="name"
+              
+             {...register('name')}
+             
+            />
+            <Input 
+       
+           
+              placeholder ="phone"
+              
+             {...register('phone')}
+             
+            />
+            
+</>
+              )
+            }
+          
+             <Button className="mt-6"  onClick={handleSubmit(onSubmit)} disabled ={isLoading} >
+            {isLoading?"Accessing...": "Sign In"}
+          </Button>
             <p className="flex items-center justify-center text-sm ">Protected By SekormeTech <ShieldMinus/></p>
           </div>
         </Card>
-      </form>
+      
+      
     </section>
   )
 }

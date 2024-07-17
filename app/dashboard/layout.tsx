@@ -1,8 +1,10 @@
 import MobileNavbar from "@/components/MobileNavbar";
 import Sidebar from "@/components/Sidebar";
+import { getSession } from "@/lib/server/getCurrentUser";
 import type { Metadata } from "next";
 import { IBM_Plex_Serif, Inter } from "next/font/google";
 import Image from "next/image"; 
+import { redirect } from "next/navigation";
 
 
 const inter = Inter({ subsets: ["latin"], variable:  '--font-inter' });
@@ -17,6 +19,9 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout ({children}: Readonly<{children :React.ReactNode;}>){
+  const loggedIn = await getSession();
+ if (!loggedIn ) redirect('/')
+  console.log(loggedIn)
     return(
         <main className="flex h-screen w-full font-inter">
 

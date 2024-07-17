@@ -89,7 +89,7 @@ const lastItemIndex = currentPage * itemsPerPage;
     <tbody>
       {
   filteredData.filter(filteredData => filteredData.pollingStation.totalVoteCast <= 0).map((data) => (
-    <tr key={data.id} className="border-b border-blue-gray-100">
+    <tr key={data.town} className="border-b border-blue-gray-100">
       {Object.keys(data.pollingStation).map((key) => {
         // Assuming all values except for 'pollingStationName' are numbers and should be displayed using CustomInput
         if (key === 'pollingStationName') {

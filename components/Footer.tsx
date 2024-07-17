@@ -1,16 +1,17 @@
 
+import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 
 import { useRouter } from 'next/navigation'
 
 const Footer = ({ type='desktop'}: FooterProps) => {
-    const router = useRouter()
-   const handleLogOut = async() =>{
-    
-    
-      router.push('/sign-in')
-    
-   }
+  
+  const router= useRouter()
+  const logOut = () =>{
+      signOut({callbackUrl:'http://localhost:3000'})
+   
+      router.push('/')
+}
   
   return (
     <footer className="footer">
@@ -24,7 +25,7 @@ const Footer = ({ type='desktop'}: FooterProps) => {
             alex@gmail.com
         </p>
     </div>
-    <div className="footer_image" onClick={handleLogOut}>
+    <div className="footer_image" onClick={logOut}>
      <Image src="/log-out.svg" fill alt="jsm"/>
     </div>
     </footer>

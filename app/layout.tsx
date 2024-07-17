@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { IBM_Plex_Serif, Inter } from "next/font/google";
 import "./globals.css";
 import { NextThemeProvider } from "@/providers/NextThemeProvider";
+import ToasterProvider from "./providers/ToasterProvider";
+import AuthProvider from './providers/AuthProvider';
+import { redirect } from "next/navigation";
+import getCurrentUser, { getSession } from "../lib/server/getCurrentUser"
 
 
 const inter = Inter({ subsets: ["latin"], variable:  '--font-inter' });
@@ -15,18 +19,25 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
+export default async function RootLayout({
+
+
+  
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
+
   return (
     <html lang="en">
    
       <body className={`bg-gray-200 ${inter.className}`}>
-      
+        <AuthProvider>
+       <ToasterProvider/>
         {children}
-       
+       </AuthProvider>
         </body>
     </html>
   );
