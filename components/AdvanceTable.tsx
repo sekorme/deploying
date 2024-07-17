@@ -12,7 +12,7 @@ const AdvanceTable = () => {
 
   const filteredData = useMemo(() => {
     return data.filter(item => {
-      const matchesSearch = item.pollingStation.pollingStationName.toLowerCase().includes(searchTerm.toLowerCase()) || item.email.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesSearch = item.pollingStation.pollingStationName.toLowerCase().includes(searchTerm.toLowerCase()) || item.town.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesFilter = filterStatus ? item.pollingStation.pollingStationName === filterStatus : true;
       return matchesSearch && matchesFilter;
     });
@@ -50,8 +50,8 @@ const AdvanceTable = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredData.filter((filteredData => filteredData.pollingStation.nppVotes <= 0 && filteredData.pollingStation.ndcVotes <=0 )).map(({ id, pollingStation }) => (
-            <tr key={id}>
+          {filteredData.filter((filteredData => filteredData.pollingStation.nppVotes <= 0 && filteredData.pollingStation.ndcVotes <=0 )).map(({  pollingStation }) => (
+            <tr key={pollingStation.ndcVotes}>
               <td>{pollingStation.pollingStationName}</td>
               <td>{pollingStation.ndcVotes}</td>
               <td>{pollingStation.nppVotes}</td>

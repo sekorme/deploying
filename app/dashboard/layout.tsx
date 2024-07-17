@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default async function RootLayout ({children}: Readonly<{children :React.ReactNode;}>){
   const loggedIn = await getSession();
  if (!loggedIn ) redirect('/')
-  console.log(loggedIn)
+ 
     return(
         <main className="flex h-screen w-full font-inter">
 
