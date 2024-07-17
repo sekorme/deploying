@@ -24,7 +24,7 @@ const AdvanceTable = () => {
   const apcPercentage = ((totalApcVotes / totalVotes) * 100).toFixed(2);
   const akaPercentage = ((totalAkaVotes / totalVotes) * 100).toFixed(2);
 
-  return (
+  return (  
     <div>
       <input
         type="text"
