@@ -41,7 +41,7 @@ export const sidebarLinks = [
 
 export const dataCollate = [
   {
-   
+   id: '1',
     town: "Swedru",
   
     pollingStation: {
@@ -55,7 +55,7 @@ export const dataCollate = [
     }
   },
   {
-
+   id: "2",
     town: "Swedru",
 
     pollingStation: {
@@ -69,7 +69,7 @@ export const dataCollate = [
     }
   },
   {
-   
+   id:"3",
     town: "Nyakrom",
 
     pollingStation: {
@@ -83,7 +83,7 @@ export const dataCollate = [
     }
   },
   {
-  
+   id: "4",
     town: "Nyakrom",
   
     pollingStation: {
@@ -97,7 +97,7 @@ export const dataCollate = [
     }
   },
    {
-    
+    id: "5",
     town: "Abodom",
    
     pollingStation: {
@@ -111,6 +111,7 @@ export const dataCollate = [
     }
   },
   {
+    id:"6",
     town: "Kukurantumi",
  
     pollingStation: {
@@ -124,7 +125,7 @@ export const dataCollate = [
     }
   },
   {
-   
+   id:"7",
     town: "Nkum",
    
     pollingStation: {
@@ -138,7 +139,7 @@ export const dataCollate = [
     }
   },
   {
-   
+   id:"8",
     town: "Nkum",
 
     pollingStation: {
@@ -152,7 +153,7 @@ export const dataCollate = [
     }
   },
   {
-   
+   id:"9",
     town: "Nkum",
 
     pollingStation: {
@@ -166,7 +167,7 @@ export const dataCollate = [
     }
   },
   {
-   
+   id:"10",
     town: "Swedru",
 
     pollingStation: {
@@ -181,7 +182,7 @@ export const dataCollate = [
     
   },
    {
-   
+   id:"11",
     town: "Swedru",
  
     pollingStation: {
@@ -195,7 +196,7 @@ export const dataCollate = [
     }
   },
   {
-  
+   id:"12",
     town: "Abodom",
  
     pollingStation: {
