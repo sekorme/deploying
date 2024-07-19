@@ -134,7 +134,7 @@ const LoginInterface = ({type}:{type:string}) => {
             }
           
              <Button className="mt-6"  onClick={handleSubmit(onSubmit)} disabled ={isLoading} >
-            {isLoading?"Accessing...": "Sign In"}
+            {type === "sign-in" ? isLoading ? "Accessing..." : "Sign In" : isLoading ? "Creating..." : "Sign Up"}
           </Button>
             <p className="flex items-center justify-center text-sm ">Protected By SekormeTech <ShieldMinus/></p>
           </div>

@@ -92,7 +92,7 @@ const lastItemIndex = currentPage * itemsPerPage;
     <tr key={data.id} className="border-b border-blue-gray-100">
       {Object.keys(data.pollingStation).map((key) => {
         // Assuming all values except for 'pollingStationName' are numbers and should be displayed using CustomInput
-        if (key === 'pollingStationName') {
+        if (key === 'pollingStationName') {  
           return <td key={key} className="p-4">{data.pollingStation[key]}</td>;
         } else {
           // For simplicity, placeholder is set to the value itself, adjust as needed

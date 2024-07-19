@@ -4,7 +4,7 @@ import "./globals.css";
 import { NextThemeProvider } from "@/providers/NextThemeProvider";
 import ToasterProvider from "./providers/ToasterProvider";
 import AuthProvider from './providers/AuthProvider';
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import getCurrentUser, { getSession } from "../lib/server/getCurrentUser"
 
 
@@ -27,6 +27,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
 
 
 
