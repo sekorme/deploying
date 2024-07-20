@@ -1,11 +1,7 @@
-
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import {Mail} from "lucide-react"
 import LoginInterface from "@/components/LoginInterface";
 import { getSession } from "@/lib/server/getCurrentUser";
-import { useRouter, redirect } from "next/navigation";
-import { useEffect } from "react";
+import {  redirect } from "next/navigation";
+
 
 
 export default async function Home() {

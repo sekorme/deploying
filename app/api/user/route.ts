@@ -2,9 +2,16 @@ import bcrypt from "bcrypt"
 import {NextResponse} from "next/server"
 import prisma from "@/utils/prismadb"
 import { isBooleanObject } from "util/types";
+import { getSession } from "@/lib/server/getCurrentUser";
+import {getServerSession} from "next-auth"
+import Nextauth from "@/pages/api/auth/[...nextauth]";
 
 
 export async function POST( request: Request){
+     const session = await getServerSession(Nextauth)
+
+    if(!session) return NextResponse.json({message: "Unauthorized"}, {status: 401})
+        
     const body = await request.json()
 
     const {username, name, phone, password} = body;
@@ -30,6 +37,9 @@ export async function POST( request: Request){
 
 export async function GET(request: Request){
     try {
+        const session = await getServerSession(Nextauth)
+
+        if(!session) return NextResponse.json({message: "Unauthorized"}, {status: 401})
 
         const branch = await prisma.user.findMany()
         const other = branch.map(({hashedPassword, ...user}) => user)
