@@ -6,7 +6,7 @@ import {Control, FieldPath} from "react-hook-form"
 import { authFormSchema, collateFormSchema } from '@/lib/utils'
 
 
-const formSchema = collateFormSchema('collate')
+const formSchema = collateFormSchema()
 
 interface CustomInput{
     control?: Control<z.infer<typeof formSchema>>,
