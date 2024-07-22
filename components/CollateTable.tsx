@@ -77,15 +77,15 @@ const CollateTable = ({filterData}:{filterData: any}) => {
      {
          <tr>
           {Object.keys(tableHeader[0]).map((key) => (
-            <th key={key}>{tableHeader[0][key as keyof typeof tableHeader[0]]}</th>
+            <th key={key} className="font-bold text-xl text-green-600 mb-8">{tableHeader[0][key as keyof typeof tableHeader[0]]}</th>
           ))}
         </tr>
      }
     </thead>
-    <tbody>
+    <tbody className="">
        {
 filteredData.filter((filteredData:any) => filteredData.totalVoteCast <= 0).map((data:any) => (
-    <tr key={data.id} className="border-b border-blue-gray-100">
+    <tr key={data.id} className="border-b border-blue-gray-100 ">
       <td className="p-4">{data.pollingStationName}</td>
       {/* Directly use CustomInput for other known properties of data */}
       <td className="p-4">

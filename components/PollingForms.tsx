@@ -43,7 +43,26 @@ const {register, formState:{errors},handleSubmit, setValue, watch} = useForm<Fie
 
 const onSubmit: SubmitHandler<FieldValues> = async(data) => {
     
-  try {
+    if(type === 'presidential'){
+         try {
+               setIsLoading(true)
+               if(submit)
+                   await axios.patch(`/api/presidential/${submit.id}`,data); 
+               
+               else
+                   await axios.post(`/api/presidential`,data); 
+              toast.success('posted successfully')
+               router.refresh()
+               window.location.reload()
+               setIsLoading(false)
+ } catch (error) {
+               setIsLoading(false)
+               toast.error('An error occured')
+              }
+};
+
+ if(type==='parliamentary'){
+     try {
                setIsLoading(true)
                if(submit)
                    await axios.patch(`/api/parliamentary/${submit.id}`,data); 
@@ -59,6 +78,9 @@ const onSubmit: SubmitHandler<FieldValues> = async(data) => {
                toast.error('An error occured')
               }
 };
+ }
+
+    
 
   return (
    <>

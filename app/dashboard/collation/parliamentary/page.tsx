@@ -3,6 +3,7 @@ import CollateTable from '@/components/CollateTable'
 import FilterTable from '@/components/FilterTable'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import React from 'react'
+import PollingForms from '../../../../components/PollingForms';
 
 const Parliamentary = () => {
   return (
@@ -15,7 +16,7 @@ const Parliamentary = () => {
     </CardHeader>
 
     <CardContent>
- 
+  <PollingForms type="parliamentary"/>
         
     </CardContent>
   </Card>

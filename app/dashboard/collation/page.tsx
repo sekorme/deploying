@@ -20,6 +20,7 @@ const data = await prisma.pollingStation.findMany()
 
 
 
+
   return (
     <>
     <Card className="bg-white mt-20 md:mt-5">

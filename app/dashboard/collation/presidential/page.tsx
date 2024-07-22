@@ -12,7 +12,7 @@ const Presidential = async () => {
                <CardDescription>Presidential</CardDescription>
            </CardHeader>
            <CardContent>
-              <PollingForms type=""/>
+              <PollingForms type="presidential"/>
 
              
            </CardContent>

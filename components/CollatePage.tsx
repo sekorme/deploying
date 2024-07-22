@@ -23,7 +23,8 @@ import {
 const CollatePage = async() => {
 
   const data = await prisma.pollingStation.findMany()
-  console.log(data)
+  const data2 = await prisma.presidentialStation.findMany()
+ 
   return (
     <>
          <Tabs defaultValue="account" className="w-full mt-5">
@@ -40,7 +41,7 @@ const CollatePage = async() => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <CollateTable filterData={data}  />
+            <CollateTable filterData={data2}  />
           </CardContent>
           <CardFooter>
             <Button>Save changes</Button>

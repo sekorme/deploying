@@ -97,3 +97,17 @@ model TableHeader {
   turnedOut   String?
   action      String?
 }
+
+
+model PresidentialStation {
+  id                  String        @id @default(auto()) @map("_id") @db.ObjectId
+  pollingStationName  String?
+  ndcVotes            Int?
+  nppVotes            Int?
+  cppVotes            Int?
+  totalVoteCast       Int?
+  location            String?
+  rejectedBallot      Int?
+  turnedOut           Int?
+
+}
