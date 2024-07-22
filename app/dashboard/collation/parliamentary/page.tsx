@@ -15,7 +15,7 @@ const Parliamentary = () => {
     </CardHeader>
 
     <CardContent>
-  <CollateTable type2="some value" />
+ 
         
     </CardContent>
   </Card>
