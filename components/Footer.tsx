@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { getSession} from '@/lib/server/getCurrentUser'
 
-const Footer = async({ type='desktop'}: FooterProps) => {
+const Footer = ({ type='desktop'}: FooterProps) => {
 
   const router= useRouter()
   const logOut = () =>{
