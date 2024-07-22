@@ -1,16 +1,20 @@
+
 import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import PollingForms from '../../../../components/PollingForms';
 
-const Presidential = () => {
+const Presidential = async () => {
   return (
    <>
-       <Card>
+       <Card className="bg-white">
             <CardHeader>
                <CardTitle>Presidential</CardTitle>
                <CardDescription>Presidential</CardDescription>
            </CardHeader>
            <CardContent>
-               <p>Presidential</p>
+              <PollingForms type=""/>
+
+             
            </CardContent>
        </Card>
    </>

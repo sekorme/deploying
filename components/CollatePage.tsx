@@ -17,9 +17,13 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
- 
+ import prisma from '../utils/prismadb';
 
-const CollatePage = () => {
+
+const CollatePage = async() => {
+
+  const data = await prisma.pollingStation.findMany()
+  console.log(data)
   return (
     <>
          <Tabs defaultValue="account" className="w-full mt-5">
@@ -36,7 +40,7 @@ const CollatePage = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <CollateTable type2="someone"/>
+            <CollateTable filterData={data}  />
           </CardContent>
           <CardFooter>
             <Button>Save changes</Button>
@@ -52,7 +56,7 @@ const CollatePage = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-           <CollateTable type2="dumb"/>
+          <CollateTable filterData={data}  />
           </CardContent>
           <CardFooter>
             <Button>Save password</Button>

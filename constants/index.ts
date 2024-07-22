@@ -1,4 +1,5 @@
 import { UserPlus } from "lucide-react";
+import prisma from "../utils/prismadb";
 
 export const sidebarLinks = [
     {

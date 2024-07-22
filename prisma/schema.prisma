@@ -27,8 +27,7 @@ model User {
 
 
   accounts Account[]
-  polls Polls[]
-  headers Headers[]
+  
 }
 
 model Account{
@@ -52,38 +51,10 @@ model Account{
 }
 
 
-model Polls{
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
-  description String
-  imageSrc String
-  createdAt DateTime @default(now())
-  category String
-  roomCount Int
-  bathroomCount Int
-  guestCount Int
-  locationValue String
-  userId String @db.ObjectId
-  prince Int
 
 
-  user User @relation(fields:[userId], references:[id], onDelete: Cascade)
-  headers Headers[]
-}
 
 
-model Headers{
-id String @id @default(auto()) @map("_id") @db.ObjectId
- userId String @db.ObjectId
- listingId String @db.ObjectId
- startDate DateTime
- endDate DateTime
- totalPrice Int
- createdAt DateTime @default(now())
-
- user User @relation(fields:[userId], references:[id], onDelete: Cascade)
- polls Polls @relation(fields: [listingId], references: [id], onDelete: Cascade)
-}
 
 
 // MongoDB Prisma schema for the provided data structure
@@ -92,21 +63,22 @@ id String @id @default(auto()) @map("_id") @db.ObjectId
 
 model DataCollate {
   id String @id @default(auto()) @map("_id") @db.ObjectId 
-  town String
-  pollingStation  PollingStation  @relation(fields: [pollingStationId], references: [id])
-  pollingStationId String
+  town String?
+ 
+  pollingStationId String?
 }
 
 model PollingStation {
   id                  String        @id @default(auto()) @map("_id") @db.ObjectId
-  pollingStationName  String
-  ndcVotes            Int
-  nppVotes            Int
-  cppVotes            Int
-  totalVoteCast       Int
-  rejectedBallot      Int
-  turnedOut           Int
-  DataCollate         DataCollate[]
+  pollingStationName  String?
+  ndcVotes            Int?
+  nppVotes            Int?
+  cppVotes            Int?
+  totalVoteCast       Int?
+  location            String?
+  rejectedBallot      Int?
+  turnedOut           Int?
+
 }
 
 model TownNames {
@@ -116,12 +88,12 @@ model TownNames {
 
 model TableHeader {
   id         String @id @default(auto()) @map("_id")@db.ObjectId
-  pollStation String
-  ndc         String
-  npp         String
-  cpp         String
-  total       String
-  rejected    String
-  turnedOut   String
-  action      String
+  pollStation String?
+  ndc         String?
+  npp         String?
+  cpp         String?
+  total       String?
+  rejected    String?
+  turnedOut   String?
+  action      String?
 }

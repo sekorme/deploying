@@ -5,7 +5,7 @@ import { NextThemeProvider } from "@/providers/NextThemeProvider";
 import ToasterProvider from "./providers/ToasterProvider";
 import AuthProvider from './providers/AuthProvider';
 import { redirect, useRouter } from "next/navigation";
-import getCurrentUser, { getSession } from "../lib/server/getCurrentUser"
+import  { getSession } from "../lib/server/getCurrentUser"
 
 
 const inter = Inter({ subsets: ["latin"], variable:  '--font-inter' });

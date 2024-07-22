@@ -1,6 +1,7 @@
-"use client"
-import React, { useMemo, useState, useEffect } from 'react'
-import { dataCollate, tableHeader, townNames } from '@/constants'
+'use client'
+import {useState, useMemo} from "react"
+
+import { tableHeader, townNames } from '@/constants'
 import CustomInput from './CustomInput';
 import { useForm } from 'react-hook-form';
 import {number, z} from "zod"
@@ -9,12 +10,20 @@ import { collateFormSchema } from '@/lib/utils';
 import { TableHead } from './ui/table';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
-import { Card } from './ui/card';
+import { Card } from './ui/card';''
+import { PollingStation } from '@prisma/client';
+import prisma from '../utils/prismadb';
 
 
 
 
-const CollateTable = ({type2}:{type2:string}) => {
+const CollateTable = ({filterData}:{filterData: any}) => {
+
+
+
+
+
+
 
  const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
@@ -23,40 +32,24 @@ const CollateTable = ({type2}:{type2:string}) => {
 
 
  
-
   const filteredData = useMemo(() => {
-    return dataCollate.filter(item => {
-      const matchesSearch = item.pollingStation.pollingStationName.toLowerCase().includes(searchTerm.toLowerCase()) || item.town.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesFilter = filterStatus ? item.town === filterStatus : true;
+    return filterData.filter((item: any )=> {
+      const matchesSearch = item.pollingStationName?.toLowerCase().includes(searchTerm.toLowerCase()) || item.town?.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesFilter = filterStatus ? item.location === filterStatus : true;
       return matchesSearch && matchesFilter;
     });
-  }, [searchTerm, filterStatus, dataCollate]);
+  }, [searchTerm, filterStatus, filterData]);
 
 
-const formSchema = collateFormSchema(type2)
+ 
 
-
- const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            nppVotes: 0,
-            ndcVotes: 0,
-            pollingStation: "",
-            cppVotes: 0,
-            totalVote: 0,
-            rejectedBallot: 0,
-        }
-    })
-
-const lastItemIndex = currentPage * itemsPerPage;
-  const firstItemIndex = lastItemIndex - itemsPerPage;
-  const currentItems = filteredData.slice(firstItemIndex, lastItemIndex);
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
 
   return (
     <Card className=" bg-white">
   <div className="flex items-center justify-between mt-10 p-3">
+   
+
        <Input
         className="w-[60%] md:w-[40%] border-rose-700 shadow-2xl focus:ring-0 rounded-xl"
         type="text"
@@ -66,10 +59,13 @@ const lastItemIndex = currentPage * itemsPerPage;
       />
     <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
         <option value="">All</option>
-      {townNames.map((item) => (
-        <option key={item.town}>{item.town}</option>
+      {townNames.map((item:any) => (
+        <option key={item.town}>{item.town.toLowerCase()}</option>
       ))}
       </select>
+
+  
+
 
   
 
@@ -87,26 +83,56 @@ const lastItemIndex = currentPage * itemsPerPage;
      }
     </thead>
     <tbody>
-      {
-  filteredData.filter(filteredData => filteredData.pollingStation.totalVoteCast <= 0).map((data) => (
+       {
+filteredData.filter((filteredData:any) => filteredData.totalVoteCast <= 0).map((data:any) => (
     <tr key={data.id} className="border-b border-blue-gray-100">
-      {Object.keys(data.pollingStation).map((key) => {
-        // Assuming all values except for 'pollingStationName' are numbers and should be displayed using CustomInput
-        if (key === 'pollingStationName') {  
-          return <td key={key} className="p-4">{data.pollingStation[key]}</td>;
-        } else {
-          // For simplicity, placeholder is set to the value itself, adjust as needed
-          return (
-            <td key={key} className="p-4 ">
-              <CustomInput 
-                placeholder={data.pollingStation[key as keyof typeof data.pollingStation].toString()} 
-                name={key} 
-                type="number" // Assuming all other keys except 'pollingStationName' are numbers
-              />
-            </td>
-          );
-        }
-      })}
+      <td className="p-4">{data.pollingStationName}</td>
+      {/* Directly use CustomInput for other known properties of data */}
+      <td className="p-4">
+        <CustomInput
+          placeholder={String(data.ndcVotes)}
+          name="ndcVotes"
+          type="number"
+        />
+      </td>
+      <td className="p-4">
+        <CustomInput
+          placeholder={String(data.nppVotes)}
+          name="nppVotes"
+          type="number"
+        />
+      </td>
+      <td className="p-4">
+        <CustomInput
+          placeholder={String(data.cppVotes)}
+          name="nppVotes"
+          type="number"
+        />
+      </td>
+
+      <td className="p-4">
+        <CustomInput
+          placeholder={String(data.totalVoteCast)}
+          name="nppVotes"
+          type="number"
+        />
+      </td>
+
+      <td className="p-4">
+        <CustomInput
+          placeholder={String(data.rejectedBallot)}
+          name="nppVotes"
+          type="number"
+        />
+      </td>
+      <td className="p-4">
+        <CustomInput
+          placeholder={String(data.turnedOut)}
+          name="nppVotes"
+          type="number"
+        />
+      </td>
+      {/* Repeat for other known numeric properties */}
       <td>
         <Button>Add</Button>
       </td>

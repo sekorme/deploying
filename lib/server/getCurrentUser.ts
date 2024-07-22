@@ -14,7 +14,7 @@ export async function getSession(){
 
 
 
-export default async function getCurrentUser(){
+export  async function getUser(){
     try{
        const session  = await getSession()
 

@@ -3,9 +3,10 @@ import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 
 import { useRouter } from 'next/navigation'
+import { getSession} from '@/lib/server/getCurrentUser'
 
-const Footer = ({ type='desktop'}: FooterProps) => {
-  
+const Footer = async({ type='desktop'}: FooterProps) => {
+
   const router= useRouter()
   const logOut = () =>{
       signOut({callbackUrl:'http://localhost:3000'})
