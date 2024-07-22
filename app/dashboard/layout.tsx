@@ -34,7 +34,7 @@ export default async function RootLayout ({children}: Readonly<{children :React.
                     <Image src="/logo1.svg" alt="Menu Icon" width={50} height={50} className="rounded-full"/>
                    <MobileNavbar />
                 </div>
-            <div className="w-full xl:pl-[308px] md:mt-5">
+            <div className="w-full xl:pl-[308px] ">
            
                 {children}
             </div>

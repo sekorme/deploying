@@ -7,7 +7,7 @@ import React from 'react'
 const Parliamentary = () => {
   return (
   <>
-  <Card className="bg-white">
+  <Card className="bg-white mt-20 md:mt-5">
     <CardHeader>
         <CardTitle className="text-green-600">
             Parliamenatry Election Results Entry Page

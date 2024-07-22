@@ -22,7 +22,7 @@ const data = await prisma.pollingStation.findMany()
 
   return (
     <>
-    <Card className="bg-white">
+    <Card className="bg-white mt-20 md:mt-5">
       <CardHeader>
         <CardTitle>Collation Page</CardTitle>
         <CardDescription>Collation of the election results.     Attention Data Entry Personnel: Please exercise caution when entering data for both parliamentary and presidential elections. Ensure accuracy and double-check all entries before submission.</CardDescription>
