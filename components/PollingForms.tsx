@@ -10,14 +10,23 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import axios from "axios"
 
-
+type FormValues ={
+    pollingStationName: string
+        nppVotes: number
+        ndcVotes: number
+        cppVotes:number
+        location:string
+        rejectedBallot: number
+        totalVoteCast:number
+        turnedOut:number
+}
 
 const PollingForms = ({type}:{type:string}, {submit}:{submit?:PollingStation}) => {
    const [isLoading, setIsLoading] = useState(false)
    const router = useRouter()
 
 //submit form data
-const {register, formState:{errors},handleSubmit, setValue, watch} = useForm<FieldValues>({
+const form = useForm<FormValues>({
     defaultValues:{
         pollingStationName: "",
         nppVotes: 0,
@@ -32,25 +41,16 @@ const {register, formState:{errors},handleSubmit, setValue, watch} = useForm<Fie
 })
 
 
- const setCustomValue = (id: string, value: any) => {
-        setValue(id, value, {
-            shouldValidate: true,
-            shouldDirty: true,
-            shouldTouch: true,
-        });
-    };
 
+const {register, handleSubmit, formState} = form;
 
-const onSubmit: SubmitHandler<FieldValues> = async(data) => {
+const onSubmit = async(data: FormValues) => {
     
     if(type === 'presidential'){
          try {
                setIsLoading(true)
-               if(submit)
-                   await axios.patch(`/api/presidential/${submit.id}`,data); 
-               
-               else
-                   await axios.post(`/api/presidential`,data); 
+              
+             await axios.post(`/api/presidential`,data); 
               toast.success('posted successfully')
                router.refresh()
                window.location.reload()
@@ -64,11 +64,8 @@ const onSubmit: SubmitHandler<FieldValues> = async(data) => {
  if(type==='parliamentary'){
      try {
                setIsLoading(true)
-               if(submit)
-                   await axios.patch(`/api/parliamentary/${submit.id}`,data); 
                
-               else
-                   await axios.post(`/api/parliamentary`,data); 
+              await axios.post(`/api/parliamentary`,data); 
               toast.success('posted successfully')
                router.refresh()
                window.location.reload()
@@ -91,53 +88,53 @@ const onSubmit: SubmitHandler<FieldValues> = async(data) => {
             </CardTitle>
         </CardHeader>
         <CardContent>
-            <form action="">
+            <form action="" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-row w-full items-center gap-4 mt-5">
                 <div className="flex flex-col space-y-1.5 w-full">
-                    <Label htmlFor="polling">Polling Station </Label>
-                    <Input id="polling" placeholder="Enter Polling Station name" {...register('pollingStationName')} />
+                    <Label htmlFor="pollingStationName">Polling Station </Label>
+                    <Input id="pollingStationName" placeholder="Enter Polling Station name" {...register('pollingStationName')} />
                 </div>
                 <div className="flex flex-col space-y-1.5 w-full">
-                    <Label htmlFor="nppvote">Npp Votes</Label>
-                    <Input id="nppvote" placeholder="Enter Npp Votes" type="number" {...register('nppVotes')} />
-                </div>
-            </div>
-
-             <div className="flex flex-row w-full items-center gap-4 mt-5">
-                <div className="flex flex-col space-y-1.5 w-full">
-                    <Label htmlFor="ndcvote">Ndc Votes</Label>
-                    <Input id="ndcvote" placeholder="Enter Ndc Votes" type="number" {...register('ndcVotes')}/>
-                </div>
-                <div className="flex flex-col space-y-1.5 w-full">
-                    <Label htmlFor="cppvote">Cpp Votes</Label>
-                    <Input id="cppvote" placeholder="Enter Cpp Votes" type="number" {...register('cppVotes')}/>
+                    <Label htmlFor="nppVote">Npp Votes</Label>
+                    <Input id="nppVote" placeholder="Enter Npp Votes" type="number" {...register('nppVotes',{valueAsNumber:true})} />
                 </div>
             </div>
 
              <div className="flex flex-row w-full items-center gap-4 mt-5">
                 <div className="flex flex-col space-y-1.5 w-full">
-                    <Label htmlFor="town">Town</Label>
-                    <Input id="town" placeholder="Enter Town Name" {...register('location')} onChange={(event) => {
+                    <Label htmlFor="ndcVotes">Ndc Votes</Label>
+                    <Input id="ndcVotes" placeholder="Enter Ndc Votes" type="number" {...register('ndcVotes',{valueAsNumber:true})}/>
+                </div>
+                <div className="flex flex-col space-y-1.5 w-full">
+                    <Label htmlFor="cppVotes">Cpp Votes</Label>
+                    <Input id="cppVotes" placeholder="Enter Cpp Votes" type="number" {...register('cppVotes',{valueAsNumber:true})}/>
+                </div>
+            </div>
+
+             <div className="flex flex-row w-full items-center gap-4 mt-5">
+                <div className="flex flex-col space-y-1.5 w-full">
+                    <Label htmlFor="location">Town</Label>
+                    <Input id="location" placeholder="Enter Town Name" {...register('location')} onChange={(event) => {
     event.target.value = event.target.value.toLowerCase();
   }} />
                 </div>
                 <div className="flex flex-col space-y-1.5 w-full">
-                    <Label htmlFor="rejected">Rejected Ballots</Label>
-                    <Input id="rejected" placeholder="Enter Rejected Ballots" type="number" {...register('rejectedBallot')} />
+                    <Label htmlFor="rejectedBallot">Rejected Ballots</Label>
+                    <Input id="rejectedBallot" placeholder="Enter Rejected Ballots" type="number" {...register('rejectedBallot',{valueAsNumber:true})} />
                 </div>
             </div>
 
              <div className="flex flex-row w-full items-center gap-4 mt-5">
                 <div className="flex flex-col space-y-1.5 w-full">
-                    <Label htmlFor="total">Total Votes</Label>
-                    <Input id="total" placeholder="Enter total votes" type="number" {...register('totalVoteCast')}/>
+                    <Label htmlFor="totalVoteCast">Total Votes</Label>
+                    <Input id="totalVoteCast" placeholder="Enter total votes" type="number" {...register('totalVoteCast',{valueAsNumber:true})}/>
                 </div>
                 <div className="flex flex-col space-y-1.5 w-full">
-                    <Label htmlFor="turned">Turned Out</Label>
-                    <Input id="turned" placeholder="Enter turned out" type="number" {...register('turnedOut')} />
+                    <Label htmlFor="turnedOut">Turned Out</Label>
+                    <Input id="turnedOut" placeholder="Enter turned out" type="number" {...register('turnedOut',{valueAsNumber:true})} />
                 </div>
             </div>
-            <Button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4" onClick={handleSubmit(onSubmit)} disabled={isLoading}>{isLoading ? "Adding....":"Submit"}</Button>
+            <Button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"  disabled={isLoading}>{isLoading ? "Adding....":"Submit"}</Button>
         </form>
         </CardContent>
         

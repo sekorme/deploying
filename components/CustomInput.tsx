@@ -10,7 +10,7 @@ const formSchema = collateFormSchema()
 
 interface CustomInput{
     control?: Control<z.infer<typeof formSchema>>,
-    name: string | number
+    name?: string | number
     label?: string,
     placeholder?: string
     type?: string
@@ -24,7 +24,7 @@ const CustomInput : React.FC <CustomInput> = ({control,type, name, read, label, 
              
                <div className="flex W-[50px] flex-col">
                
-                    <Input placeholder={placeholder} className="input-class" type={type} readOnly ={read}/>
+                    <Input placeholder={placeholder} className="input-class" type={type} readOnly />
                
                  
 

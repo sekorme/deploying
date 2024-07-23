@@ -6,7 +6,7 @@ import PollingForms from '../../../../components/PollingForms';
 const Presidential = async () => {
   return (
    <>
-       <Card className="bg-white mt-20 md:mt-5">
+       <Card className="bg-white mt-20 xl:mt-5">
             <CardHeader>
                <CardTitle>Presidential</CardTitle>
                <CardDescription>Presidential</CardDescription>

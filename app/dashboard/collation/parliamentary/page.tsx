@@ -8,7 +8,7 @@ import PollingForms from '../../../../components/PollingForms';
 const Parliamentary = () => {
   return (
   <>
-  <Card className="bg-white mt-20 md:mt-5">
+  <Card className="bg-white mt-20 xl:mt-5">
     <CardHeader>
         <CardTitle className="text-green-600">
             Parliamenatry Election Results Entry Page

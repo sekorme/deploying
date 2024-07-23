@@ -14,7 +14,7 @@ import CandidateCard from '@/components/CandidateCard'
 const DashBoard = () => {
   return (
     <>
-  <Card className=" mt-20 md:mt-5 contrast-10 brightness-120 bg-white  shadow-2xl ">
+  <Card className=" mt-20 xl:mt-5 contrast-10 brightness-120 bg-white  shadow-2xl ">
       <CardHeader>
         <CardTitle>Dashbaord - Overview</CardTitle>
         <CardDescription>Overview of the election results.</CardDescription>

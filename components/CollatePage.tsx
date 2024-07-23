@@ -18,7 +18,9 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
  import prisma from '../utils/prismadb';
-
+interface Props{
+  params: {id:string}
+}
 
 const CollatePage = async() => {
 
@@ -41,7 +43,7 @@ const CollatePage = async() => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <CollateTable filterData={data2}  />
+            <CollateTable filterData={data2} type="presidential" />
           </CardContent>
           <CardFooter>
             <Button>Save changes</Button>
@@ -57,10 +59,10 @@ const CollatePage = async() => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-          <CollateTable filterData={data}  />
+          <CollateTable filterData={data}  type="parliamentary" />
           </CardContent>
           <CardFooter>
-            <Button>Save password</Button>
+         
           </CardFooter>
         </Card>
       </TabsContent>
