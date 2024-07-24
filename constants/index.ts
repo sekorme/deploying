@@ -147,20 +147,7 @@ export const dataCollate = [
       pollingStationName: "Anglican Church Swd - B130203",
       ndcVotes: 10,
       nppVotes: 5,
-      cppVotes:2,
-      totalVoteCast:0,
-      rejectedBallot: 9,
-      turnedOut:0,
-    }
-  },
-  {
-   id:"9",
-    town: "Nkum",
 
-    pollingStation: {
-      pollingStationName: "OLD GES Office, Swd - B130204",
-      ndcVotes: 30,
-      nppVotes: 20,
       cppVotes: 5,
       totalVoteCast: 0,
       rejectedBallot: 1,
@@ -263,8 +250,6 @@ export const tableHeader = [
 
 
 export const allRejected = dataCollate.map(item => item.pollingStation.rejectedBallot).length;
-
-
 
 
 

@@ -71,28 +71,28 @@ const {register, handleSubmit, formState} = form;
             {current?.pollingStationName}
         </td>
      <td className="p-4 border-green-600">
-        <Input className="active:bg-green-600 transition-all"  {...register('ndcVotes',{valueAsNumber:true})} type="number"/>
+        <Input className="active:bg-green-600 transition-all"  {...register('ndcVotes',{valueAsNumber:true})} type="text" />
       
      </td>
      <td className="p-4m border-red-600">
-        <Input className="active:bg-blue-600" {...register('nppVotes',{valueAsNumber:true})} type="number"/>
+        <Input className="active:bg-blue-600" {...register('nppVotes',{valueAsNumber:true})} type="text"/>
       
      </td>
      <td className="p-4 border-yellow-600">
-        <Input className="active:bg-yellow-200" {...register('cppVotes',{valueAsNumber:true})} type="number"/>
+        <Input className="active:bg-yellow-200" {...register('cppVotes',{valueAsNumber:true})} type="text"/>
       
      </td>
      <td className="p-4">
-        <Input {...register('totalVoteCast',{valueAsNumber:true})} type="number"/>
+        <Input {...register('totalVoteCast',{valueAsNumber:true})} type="text"/>
       
      </td>
      <td className="p-4">
-        <Input {...register('rejectedBallot',{valueAsNumber:true})} type="number"/>
+        <Input {...register('rejectedBallot',{valueAsNumber:true})} type="text"/>
       
      </td>
 
      <td  className="p-4">
-        <Input {...register('turnedOut',{valueAsNumber:true})} type="number"/>
+        <Input {...register('turnedOut',{valueAsNumber:true})} type="text"/>
       
      </td>
      <td className="p-4">
