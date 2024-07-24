@@ -1,20 +1,14 @@
 
-import LoginInterface from '@/components/LoginInterface'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import {Input} from '@/components/ui/input'
-import { SelectGroup } from '@/components/ui/select'
-import { Label } from '@/components/ui/label'
-import { Select as S, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectLabel } from '@/components/ui/select'
-import Select from '@/components/Select'
+
+
+
 import OverView  from '@/components/OverView'
-import CandidateCard from '@/components/CandidateCard'
-import toast from "react-hot-toast"
-import { totalCppVotes } from '@/constants';
 
 
 
 
-const DashBoard = () => {
+export default async function Dashboard() {
 
 
 
@@ -51,4 +45,3 @@ const DashBoard = () => {
   )
 }
 
-export default DashBoard

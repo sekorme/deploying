@@ -1,6 +1,7 @@
+'use client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import React from 'react'
+import React,{useState} from 'react'
 import {useForm, FieldValues, SubmitHandler} from "react-hook-form"
 import axios from "axios"
 import toast from "react-hot-toast"
@@ -22,7 +23,7 @@ type FormValues ={
 
 const UpdatePage = ({current, list,type}:any) => {
 
-const [isLoading, setIsLoading] = React.useState(false)
+const [isLoading, setIsLoading] = useState(false)
 
 const router = useRouter()
 
