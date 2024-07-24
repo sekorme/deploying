@@ -1,4 +1,5 @@
 import prisma from "@/utils/prismadb"
+import { revalidatePath } from "next/cache";
 import {NextResponse} from "next/server"
 
 
@@ -26,4 +27,18 @@ export  async function POST(req: Request){
  } catch (error) {
         return NextResponse.json('An Error Occured')
  }
+}
+
+
+
+export async function GET(req:Request){
+    try{
+      const parliamentary = await prisma.pollingStation.findMany()
+      return NextResponse.json(parliamentary,{status:200})
+      revalidatePath('/dasboard')
+      revalidatePath('/dashboard/collation')
+    }
+    catch(error){
+        return NextResponse.json('An Error Occcured')
+    }
 }
