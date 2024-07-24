@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import { CardContent, CardFooter } from './ui/card'
 import DoughnutChart from './DoughnutChart'
 import DataCard from './DataCard'
@@ -6,30 +7,48 @@ import CandidateCard from './CandidateCard'
 import toast  from 'react-hot-toast'
 
 
-async function getData(){
-  const data = await fetch('/api/presidential', {method: 'GET', cache:'no-store'})
- if(!data){
-  throw new Error('Somehting went wrong')
-  toast.error('something went wrong')
+async function fetchData() {
+  const response = await fetch('http://localhost:3000/api/presidential', { method: 'GET', cache: 'no-store' });
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return response.json();
 }
 
-return data.json()
-}
+const PresidentOverView = () => {
+  const [data, setData] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-const PresidentOverView = async() => {
-const newdata = await getData()
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await fetchData();
+        setData(result);
+        setLoading(false);
+      } catch (err:any) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    getData();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
 
 
-    const totalNdcVotes = newdata.reduce((acc:any, curr:any) => acc + curr.ndcVotes, 0);
-const totalNppVotes = newdata.reduce((acc:any, curr:any) => acc + curr.nppVotes, 0);
-const totalRejectedVotes = newdata.reduce((acc:any, curr:any) => acc + curr.rejectedBallot, 0);
-const totalVotes = newdata.reduce((acc:any, curr:any) => acc + curr.totalVoteCast, 0);
-const totalCppVotes = newdata.reduce((acc:any, curr:any) => acc + curr.cppVotes, 0);
-const countRejectedBallots = newdata.map((item :any) => item.rejectedBallot =0 ).length;
-const totalTurnedOut = newdata.reduce((acc:any, curr:any) => acc + curr.turnedOut,0)
+    const totalNdcVotes = data.reduce((acc:any, curr:any) => acc + curr.ndcVotes, 0);
+const totalNppVotes = data.reduce((acc:any, curr:any) => acc + curr.nppVotes, 0);
+const totalRejectedVotes = data.reduce((acc:any, curr:any) => acc + curr.rejectedBallot, 0);
+const totalVotes = data.reduce((acc:any, curr:any) => acc + curr.totalVoteCast, 0);
+const totalCppVotes = data.reduce((acc:any, curr:any) => acc + curr.cppVotes, 0);
+const countRejectedBallots = data.map((item :any) => item.rejectedBallot =0 ).length;
+const totalTurnedOut = data.reduce((acc:any, curr:any) => acc + curr.turnedOut,0)
 
-const  allRejected = newdata.map((item:any) => item.rejectedBallot >0).length;
+const  allRejected = data.map((item:any) => item.rejectedBallot >0).length;
   return (
     <>
       <CardContent>
