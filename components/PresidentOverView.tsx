@@ -35,8 +35,7 @@ const PresidentOverView = () => {
     getData();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  
 
 
 
