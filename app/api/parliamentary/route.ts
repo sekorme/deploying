@@ -35,8 +35,7 @@ export async function GET(req:Request){
     try{
       const parliamentary = await prisma.pollingStation.findMany()
 
-      revalidatePath('/dashboard')
-      revalidatePath('/dashboard/collation')
+   
       return NextResponse.json(parliamentary,{status:200})
      
     }
