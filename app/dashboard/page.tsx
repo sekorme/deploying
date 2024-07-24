@@ -14,7 +14,7 @@ import { totalCppVotes } from '@/constants';
 
 
 
-const DashBoard = async() => {
+const DashBoard = () => {
 
 
 
@@ -46,10 +46,7 @@ const DashBoard = async() => {
 
   </Card>
 
-  <div>
-    Hello
-  </div>
-   
+ 
   </>
   )
 }
