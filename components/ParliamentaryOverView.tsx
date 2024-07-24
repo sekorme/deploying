@@ -9,7 +9,7 @@ import axios from 'axios'
 
 
 async function fetchData() {
-  const response = await fetch('http://localhost:3000/api/parliamentary', { method: 'GET', cache: 'no-store' });
+  const response = await fetch('/api/parliamentary', { method: 'GET', cache: 'no-store' });
   if (!response.ok) {
     throw new Error('Failed to fetch data');
   }
