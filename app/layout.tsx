@@ -6,7 +6,7 @@ import ToasterProvider from "./providers/ToasterProvider";
 import AuthProvider from './providers/AuthProvider';
 import { redirect, useRouter } from "next/navigation";
 import  { getSession } from "../lib/server/getCurrentUser"
-import { SpeedInsights } from '@vercel/speed-insights/next';
+
 
 
 const inter = Inter({ subsets: ["latin"], variable:  '--font-inter' });
@@ -40,7 +40,7 @@ export default async function RootLayout({
        <ToasterProvider/>
         {children}
        </AuthProvider>
-        <SpeedInsights />
+     
 
         </body>
     </html>

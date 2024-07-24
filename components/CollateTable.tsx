@@ -124,7 +124,7 @@ const onSubmit = async(data: FormValues) => {
 
 function handleEdit(id: string) {
    setUpdateState(id)
-   console.log(id)
+  
 }
 
   return (
