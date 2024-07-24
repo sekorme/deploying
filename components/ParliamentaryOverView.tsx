@@ -3,11 +3,12 @@ import { CardContent, CardFooter } from './ui/card'
 import DoughnutChart from './DoughnutChart'
 import DataCard from './DataCard'
 import CandidateCard from './CandidateCard'
-import { toast } from 'react-hot-toast'
+import toast  from 'react-hot-toast'
+import axios from 'axios'
 
 
 async function getData(){
-  const data = await fetch('http://localhost:3000/api/parliamentary', {method: 'GET', cache:'no-store'})
+  const data = await fetch('http://localhost:3000/api/parliamentary',{method: 'GET', cache:'no-store'})
  if(!data){
   throw new Error('Somehting went wrong')
   toast.error('something went wrong')

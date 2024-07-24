@@ -3,7 +3,7 @@ import { CardContent, CardFooter } from './ui/card'
 import DoughnutChart from './DoughnutChart'
 import DataCard from './DataCard'
 import CandidateCard from './CandidateCard'
-import { toast } from 'react-hot-toast'
+import toast  from 'react-hot-toast'
 
 
 async function getData(){

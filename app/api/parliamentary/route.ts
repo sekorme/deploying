@@ -1,3 +1,4 @@
+"use server"
 import prisma from "@/utils/prismadb"
 import { revalidatePath } from "next/cache";
 import {NextResponse} from "next/server"

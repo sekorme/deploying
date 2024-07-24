@@ -1,3 +1,4 @@
+"use server"
 import {NextRequest, NextResponse} from "next/server"
 import prisma from "@/utils/prismadb"
 
@@ -32,7 +33,7 @@ const {id} = params
 
     return NextResponse.json(parliamentray,{status:200})
    } catch (error) {
-    console.log(error)
+    
 
     return NextResponse.json({message: "An Error Occured"}, {status: 500})
    }

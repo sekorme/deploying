@@ -1,3 +1,4 @@
+"use server"
 import prisma from "@/utils/prismadb"
 import { revalidatePath } from "next/cache";
 import {NextResponse} from "next/server"
@@ -38,6 +39,6 @@ export async function GET(req:Request){
      
     }
     catch(error){
-        return NextResponse.json('An Error Occcured')
+        return NextResponse.json('An Error Occcured',{status:404})
     }
 }
