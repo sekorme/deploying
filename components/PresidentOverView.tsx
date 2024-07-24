@@ -7,7 +7,7 @@ import toast  from 'react-hot-toast'
 
 
 async function getData(){
-  const data = await fetch('http://localhost:3000/api/presidential', {method: 'GET', cache:'no-store'})
+  const data = await fetch('/api/presidential', {method: 'GET', cache:'no-store'})
  if(!data){
   throw new Error('Somehting went wrong')
   toast.error('something went wrong')

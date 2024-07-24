@@ -29,9 +29,7 @@ export default async function Dashboard() {
         
           <>
          
-           <OverView
-            
-           />
+           <OverView/>
 
           
           </>

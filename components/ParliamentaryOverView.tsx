@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 async function getData(){
-  const data = await fetch('http://localhost:3000/api/parliamentary',{method: 'GET', cache:'no-store'})
+  const data = await fetch('/api/parliamentary',{method: 'GET', cache:'no-store'})
  if(!data){
   throw new Error('Somehting went wrong')
   toast.error('something went wrong')
