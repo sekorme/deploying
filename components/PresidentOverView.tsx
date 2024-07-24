@@ -66,9 +66,9 @@ const  allRejected = data.map((item:any) => item.rejectedBallot >0).length;
           </CardContent>
           <CardFooter>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mt-5 gap-4">
-              <CandidateCard image="tina.jpg" name="NDC Candidate" pvotes={totalNdcVotes}/>
-              <CandidateCard image="chris.jpg" name="NPP Candidate"  pvotes={totalNppVotes}/>
-              <CandidateCard image="tina.jpg" name="CPP Candidate" pvotes={totalCppVotes}/>
+              <CandidateCard image="jm8.jpeg" name="NDC Candidate" pvotes={totalNdcVotes}/>
+              <CandidateCard image="bw8.jpg" name="NPP Candidate"  pvotes={totalNppVotes}/>
+              <CandidateCard image="chd8.jpg" name="CPP Candidate" pvotes={totalCppVotes}/>
             </div>
           </CardFooter>
     </>
