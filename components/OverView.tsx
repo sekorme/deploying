@@ -22,7 +22,7 @@ import ParliamentaryOverView from "./ParliamentaryOverView"
 import PresidentOverView from "./PresidentOverView"
 
 
-export function OverView() {
+const OverView = ()=> {
   return (
     <>
     <Tabs defaultValue="presidential" className="w-full mt-5">
@@ -58,3 +58,6 @@ export function OverView() {
     </>
   )
 }
+
+
+export default OverView

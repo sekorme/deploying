@@ -21,7 +21,7 @@ const newdata = await getData()
 
 
 
-    const totalNdcVotes = newdata.reduce((acc:any, curr:any) => acc + curr.ndcVotes, 0);
+const totalNdcVotes = newdata.reduce((acc:any, curr:any) => acc + curr.ndcVotes, 0);
 const totalNppVotes = newdata.reduce((acc:any, curr:any) => acc + curr.nppVotes, 0);
 const totalRejectedVotes = newdata.reduce((acc:any, curr:any) => acc + curr.rejectedBallot, 0);
 const totalVotes = newdata.reduce((acc:any, curr:any) => acc + curr.totalVoteCast, 0);

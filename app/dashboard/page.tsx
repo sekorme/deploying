@@ -6,7 +6,7 @@ import { SelectGroup } from '@/components/ui/select'
 import { Label } from '@/components/ui/label'
 import { Select as S, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectLabel } from '@/components/ui/select'
 import Select from '@/components/Select'
-import { OverView } from '@/components/OverView'
+import OverView  from '@/components/OverView'
 import CandidateCard from '@/components/CandidateCard'
 import toast from "react-hot-toast"
 import { totalCppVotes } from '@/constants';
