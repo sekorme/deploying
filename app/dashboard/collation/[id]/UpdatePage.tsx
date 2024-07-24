@@ -45,7 +45,27 @@ const {register, handleSubmit, formState} = form;
 
 
  const onSubmit =  async(data: FormValues) => {
-      try {
+     if(type==='presidential'){
+       try {
+      setIsLoading(true)
+      await axios.patch(`/api/presidential/${current.id}`,data);
+      
+      toast.success('Collated successful')
+      router.refresh()
+      // revalidate('/dashboard') // Removed undefined function call
+      // Optionally, refresh the data in CollatePage or show a success message
+     setIsLoading(false)
+    } catch (error) {
+      console.error('Error updating data', error);
+      // Optionally, handle error (e.g., show an error message)
+      toast.error('Error Updating')
+      setIsLoading(false)
+    }
+     }
+
+
+     if(type==='parliamentary'){
+       try {
       setIsLoading(true)
       await axios.patch(`/api/parliamentary/${current.id}`,data);
       
@@ -60,6 +80,7 @@ const {register, handleSubmit, formState} = form;
       toast.error('Error Updating')
       setIsLoading(false)
     }
+     }
    }
 
 

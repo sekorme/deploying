@@ -13,7 +13,6 @@ import { totalCppVotes } from '@/constants';
 
 
 
-
 async function getData(){
   const data = await fetch('http://localhost:3000/api/presidential', {method: 'GET', cache:'no-store'})
  if(!data){
@@ -34,7 +33,8 @@ const totalVotes = newdata.reduce((acc:any, curr:any) => acc + curr.totalVoteCas
 const totalCppVotes = newdata.reduce((acc:any, curr:any) => acc + curr.cppVotes, 0);
 const countRejectedBallots = newdata.map((item :any) => item.rejectedBallot  >0).length;
 
-const  allRejected = newdata.map((item:any) => item.rejectedBallot).length;
+const  allRejected = newdata.map((item:any) => item.rejectedBallot <0).length;
+
 
 
   return (
@@ -50,9 +50,9 @@ const  allRejected = newdata.map((item:any) => item.rejectedBallot).length;
         <CardContent>
         
           <>
-           <Select/>
+         
            <OverView
-            allRejected={totalRejectedVotes}
+            allRejected={allRejected}
             totalNdcVotes = {totalNdcVotes}
             totalNppVotes = {totalNppVotes}
             totalVotes = {totalVotes}
