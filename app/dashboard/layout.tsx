@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Serif, Inter } from "next/font/google";
 import Image from "next/image"; 
 import { redirect } from "next/navigation";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 
 const inter = Inter({ subsets: ["latin"], variable:  '--font-inter' });
@@ -37,6 +38,8 @@ export default async function RootLayout ({children}: Readonly<{children :React.
             <div className="w-full xl:pl-[308px] ">
            
                 {children}
+              <SpeedInsights />
+
             </div>
         </main>
     )

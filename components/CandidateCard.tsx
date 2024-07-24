@@ -5,6 +5,7 @@ interface Emage{
     image?: string
     name?:string
     pvotes?: number|string
+   
 }
 const CandidateCard = ({image,pvotes, name}:Emage) => {
   return (

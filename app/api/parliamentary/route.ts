@@ -34,9 +34,11 @@ export  async function POST(req: Request){
 export async function GET(req:Request){
     try{
       const parliamentary = await prisma.pollingStation.findMany()
-      return NextResponse.json(parliamentary,{status:200})
-      revalidatePath('/dasboard')
+
+      revalidatePath('/dashboard')
       revalidatePath('/dashboard/collation')
+      return NextResponse.json(parliamentary,{status:200})
+     
     }
     catch(error){
         return NextResponse.json('An Error Occcured')

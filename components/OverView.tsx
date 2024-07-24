@@ -18,9 +18,10 @@ import {
 import DoughnutChart from "./DoughnutChart"
 import DataCard from "./DataCard"
 import CandidateCard from "./CandidateCard"
-import { allRejected, totalCppVotes, totalNdcVotes, totalNppVotes, totalVotes,countRejectedBallots } from "@/constants"
+import ParliamentaryOverView from "./ParliamentaryOverView"
 
-export function OverView() {
+
+export function OverView({ allRejected, totalCppVotes, totalNdcVotes, totalNppVotes, totalVotes,countRejectedBallots }:any) {
   return (
     <>
     <Tabs defaultValue="presidential" className="w-full mt-5">
@@ -36,10 +37,10 @@ export function OverView() {
               Overview of the presidential election results
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent >
             <div className="grid grid-cols-1 gap-1 md:grid-cols-2 sm:grid-cols-1 w-full items-center justify-center ">
               <div className="total-balance-chart w-[350px]">
-                <DoughnutChart/>
+                <DoughnutChart totalCppVotes={totalCppVotes} totalNdcVotes={totalNdcVotes} totalNppVotes ={totalNppVotes}/>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center justify-center gap-1">
@@ -52,7 +53,7 @@ export function OverView() {
           </CardContent>
           <CardFooter>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mt-5 gap-4">
-              <CandidateCard image="jm8.jpeg" name="NDC Candidate" pvotes={totalNdcVotes}/>
+              <CandidateCard image="jm8.jpeg" name="NDC Candidate"  pvotes={totalNdcVotes}/>
               <CandidateCard image="bw8.jpg" name="NPP Candidate" pvotes={totalNppVotes}/>
               <CandidateCard image="chd8.jpg" name="CPP Candidate" pvotes={totalCppVotes}/>
             </div>
@@ -67,27 +68,7 @@ export function OverView() {
               overview of the parliamentary election results
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 gap-1 md:grid-cols-2 sm:grid-cols-1 w-full items-center justify-center ">
-              <div className="total-balance-chart w-[350px]">
-                <DoughnutChart/>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center justify-center gap-1">
-                <DataCard title="Total Vote" desc="Total Votes Cast" icon="/user-plus.svg" value={totalVotes} cl="bg-green-700 " tl="text-white" sp="text-white"/>
-                <DataCard title="Rejected" desc="Reject Ballots" icon="/ban.svg" value="20" cl="bg-red-600" tl="text-white" sp="text-white"/>
-                <DataCard title="Turned Out" desc="No. of voters" icon="/user-round-check.svg" value="40" tl="text-green-600" />
-                <DataCard title="P. Stations" desc="No. of Polling Stations" icon="/map-pinned.svg" value={countRejectedBallots +"/" + allRejected} cl="bg-gray-800" tl="text-white" sp="text-white"/>
-              </div>
-            </div>
-          </CardContent>
-          <CardFooter>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mt-5 gap-4">
-              <CandidateCard image="tina.jpg" name="NDC Candidate" pvotes={totalNdcVotes}/>
-              <CandidateCard image="chris.jpg" name="NPP Candidate" pvotes={totalNppVotes}/>
-              <CandidateCard image="tina.jpg" name="CPP Candidate" pvotes={totalCppVotes}/>
-            </div>
-          </CardFooter>
+            <ParliamentaryOverView/>
         </Card>
       </TabsContent>
     </Tabs>
