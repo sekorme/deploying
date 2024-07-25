@@ -17,7 +17,8 @@ export const metadata: Metadata = {
   description: "Agona West NDC Collation System",
   icons: {
     icon: '/logo.jpg'
-  }
+  },
+  manifest:'/manifest.webmanifest'
 };
 
 export default async function RootLayout({
