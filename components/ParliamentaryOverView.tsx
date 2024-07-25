@@ -45,10 +45,11 @@ const totalNppVotes = data.reduce((acc:any, curr:any) => acc + curr.nppVotes, 0)
 const totalRejectedVotes = data.reduce((acc:any, curr:any) => acc + curr.rejectedBallot, 0);
 const totalVotes = data.reduce((acc:any, curr:any) => acc + curr.totalVoteCast, 0);
 const totalCppVotes = data.reduce((acc:any, curr:any) => acc + curr.cppVotes, 0);
-const countRejectedBallots = data.map((item :any) => item.rejectedBallot =0 ).length;
+const countRejectedBallots = data.filter(item => item.totalVoteCast > 0).length;
+const  allRejected = data.map((item:any) => item.totalVoteCast >0).length;
 const totalTurnedOut = data.reduce((acc:any, curr:any) => acc + curr.turnedOut,0)
 
-const  allRejected = data.map((item:any) => item.rejectedBallot >0).length;
+;
   return (
     <>
       <CardContent>
