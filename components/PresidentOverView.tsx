@@ -88,9 +88,9 @@ const isCppLowest = totalCppVotes === lowestVotes
           </CardContent>
           <CardFooter>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mt-5 gap-4">
-              <CandidateCard image="jm8.jpeg" name="NDC Candidate" pvotes={totalNdcVotes} percentage={ndcPercentage} cls={isNdcHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isNdcLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
-              <CandidateCard image="bw8.jpg" name="NPP Candidate"  pvotes={totalNppVotes} percentage={nppPercentage} cls={isNppHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isNppLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
-              <CandidateCard image="chd8.jpg" name="CPP Candidate" pvotes={totalCppVotes} percentage={cppPercentage} cls={isCppHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isCppLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
+              <CandidateCard image="jm8.jpeg" name="NDC Candidate" logo="logo.jpg" pvotes={totalNdcVotes} percentage={ndcPercentage} cls={isNdcHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isNdcLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
+              <CandidateCard image="bw8.jpg" name="NPP Candidate"  logo="npp1.png" pvotes={totalNppVotes} percentage={nppPercentage} cls={isNppHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isNppLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
+              <CandidateCard image="chd8.jpg" name="CPP Candidate" logo="cpp.png" pvotes={totalCppVotes} percentage={cppPercentage} cls={isCppHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isCppLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
             </div>
           </CardFooter>
     </>

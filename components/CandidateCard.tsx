@@ -7,14 +7,15 @@ interface Emage{
     pvotes?: number|string
     percentage?: number|string
     cls?: string
+    logo?:string
    }
 
 
 
-const CandidateCard = ({image,pvotes,percentage, cls,  name}:Emage) => {
+const CandidateCard = ({image,pvotes,percentage, cls, logo,  name}:Emage) => {
   return (
     <div>
-        <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full ">
+        <div className="relative flex flex-col bg-black-2 mt-6 text-gray-700  shadow-md bg-clip-border rounded-xl w-full ">
   <div
     className="relative  mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40  h-60">
     <Image 
@@ -25,7 +26,7 @@ const CandidateCard = ({image,pvotes,percentage, cls,  name}:Emage) => {
   </div>
   <div className="p-6">
     <div className="flex items-center justify-between mb-3">
-      <h5 className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-green-600">
+      <h5 className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-white">
        {name}
       </h5>
       <p
@@ -34,7 +35,16 @@ const CandidateCard = ({image,pvotes,percentage, cls,  name}:Emage) => {
         {pvotes}
       </p>
     </div>
-     <p className={`${cls}`}>{percentage || 0}%</p>
+    <div className="flex items-center justify-between bg-white p-2 gap-2 rounded-2xl">
+      <Image
+      className="rounded-full w-12 h-12"
+     width={60} 
+     height={60}
+       src={`/${logo}`}
+       alt="logo"
+      />
+       <p className={`${cls} w-full`}>{percentage || 0}%</p>
+    </div>
   </div>
   
 </div>  
