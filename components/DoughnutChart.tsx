@@ -12,7 +12,7 @@ ChartJs.register(ArcElement, Tooltip, Legend);
 const DoughnutChart = ({totalCppVotes, totalNdcVotes, totalNppVotes}:any) => {
     const data ={
         datasets:[
-            { label: 'Banks', data:[totalNdcVotes, totalNppVotes, totalCppVotes], backgroundColor:['#FF6384', '#36A2EB', '#FFCE56']}
+            { label: 'Votes', data:[totalNdcVotes, totalNppVotes, totalCppVotes], backgroundColor:['#FF6384', '#36A2EB', '#FFCE56']}
         ],
         labels:['NDC', 'NPP', 'CPP']
     }
