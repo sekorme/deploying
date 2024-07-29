@@ -5,9 +5,13 @@ interface Emage{
     image?: string
     name?:string
     pvotes?: number|string
-   
-}
-const CandidateCard = ({image,pvotes, name}:Emage) => {
+    percentage?: number|string
+    cls?: string
+   }
+
+
+
+const CandidateCard = ({image,pvotes,percentage, cls,  name}:Emage) => {
   return (
     <div>
         <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full ">
@@ -30,7 +34,7 @@ const CandidateCard = ({image,pvotes, name}:Emage) => {
         {pvotes}
       </p>
     </div>
- 
+     <p className={`${cls}`}>{percentage || 0}%</p>
   </div>
   
 </div>  

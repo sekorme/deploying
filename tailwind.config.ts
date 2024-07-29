@@ -68,12 +68,15 @@ const config = {
           700: "#344054",
           900: "#101828",
         },
+        customYellow: "#FBDA61"
       },
       backgroundImage: {
         "bank-gradient": "linear-gradient(90deg, #0179FE 0%, #4893FF 100%)",
         "gradient-mesh": "url('/icons/gradient-mesh.svg')",
         "bank-green-gradient":
           "linear-gradient(90deg, #01797A 0%, #489399 100%)",
+        "card-gradient": "linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%)",
+        'black-glass-gradient': "linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%)"
       },
       boxShadow: {
         form: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",

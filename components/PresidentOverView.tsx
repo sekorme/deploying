@@ -50,6 +50,26 @@ const  allRejected = data.map((item:any) => item.totalVoteCast >0).length;
 const totalTurnedOut = data.reduce((acc:any, curr:any) => acc + curr.turnedOut,0)
 
 
+
+//percenates
+const ndcPercentage = ((totalNdcVotes / totalTurnedOut) * 100).toFixed(2);
+const nppPercentage = ((totalNppVotes / totalTurnedOut) *100).toFixed(2);
+const cppPercentage =((totalCppVotes / totalTurnedOut) * 100).toFixed(2)
+
+
+//find the hightsest number
+const highestVotes = Math.max(totalNdcVotes, totalCppVotes, totalNppVotes);
+const isNdcHighest = totalNdcVotes === highestVotes
+const isNppHighest = totalNppVotes === highestVotes
+const isCppHighest = totalCppVotes === highestVotes
+
+
+//finding the lowest number
+const lowestVotes = Math.min(totalNdcVotes, totalCppVotes, totalNppVotes)
+const isNdcLowest = totalNdcVotes === lowestVotes
+const isNppLowest = totalNppVotes === lowestVotes
+const isCppLowest = totalCppVotes === lowestVotes
+
   return (
     <>
       <CardContent>
@@ -61,16 +81,16 @@ const totalTurnedOut = data.reduce((acc:any, curr:any) => acc + curr.turnedOut,0
               <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center justify-center gap-1">
                 <DataCard  title="Total Vote" desc="Total Votes Cast" icon="/user-plus.svg" value={totalVotes} cl="bg-green-700 " tl="text-white" sp="text-white"/>
                 <DataCard title="Rejected" desc="Reject Ballots" icon="/ban.svg" value={totalRejectedVotes} cl="bg-red-600" tl="text-white" sp="text-white"/>
-                <DataCard title="Turned Out" desc="No. of voters" icon="/user-round-check.svg" value={totalTurnedOut} tl="text-green-600" />
+                <DataCard title="Valid Votes" desc="No. of valid votes" icon="/user-round-check.svg" value={totalTurnedOut} tl="text-green-600" />
                 <DataCard title="P. Stations" desc="No. of Polling Stations" icon="/map-pinned.svg" value={countRejectedBallots +"/" + allRejected} cl="bg-gray-800" tl="text-white" sp="text-white"/>
               </div>
             </div>
           </CardContent>
           <CardFooter>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mt-5 gap-4">
-              <CandidateCard image="jm8.jpeg" name="NDC Candidate" pvotes={totalNdcVotes}/>
-              <CandidateCard image="bw8.jpg" name="NPP Candidate"  pvotes={totalNppVotes}/>
-              <CandidateCard image="chd8.jpg" name="CPP Candidate" pvotes={totalCppVotes}/>
+              <CandidateCard image="jm8.jpeg" name="NDC Candidate" pvotes={totalNdcVotes} percentage={ndcPercentage} cls={isNdcHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isNdcLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
+              <CandidateCard image="bw8.jpg" name="NPP Candidate"  pvotes={totalNppVotes} percentage={nppPercentage} cls={isNppHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isNppLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
+              <CandidateCard image="chd8.jpg" name="CPP Candidate" pvotes={totalCppVotes} percentage={cppPercentage} cls={isCppHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isCppLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
             </div>
           </CardFooter>
     </>

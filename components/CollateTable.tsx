@@ -187,13 +187,15 @@ function handleEdit(id: string) {
                       {...register('cppVotes',{valueAsNumber:true})}
                     />
                   </td>
+
                   <td className="p-4">
                     <CustomInput
-                      placeholder={data.totalVoteCast}
-                      {...register('totalVoteCast',{valueAsNumber:true})}
+                      placeholder={data.turnedOut}
+                      {...register('turnedOut',{valueAsNumber:true})}
                       type="number"
                     />
                   </td>
+                  
                   <td className="p-4">
                     <CustomInput
                       placeholder={data.rejectedBallot}
@@ -201,10 +203,11 @@ function handleEdit(id: string) {
                       type="number"
                     />
                   </td>
+                  
                   <td className="p-4">
                     <CustomInput
-                      placeholder={data.turnedOut}
-                      {...register('turnedOut',{valueAsNumber:true})}
+                      placeholder={data.totalVoteCast}
+                      {...register('totalVoteCast',{valueAsNumber:true})}
                       type="number"
                     />
                   </td>

@@ -226,9 +226,9 @@ export const tableHeader = [
         npp: 'NPP',
         cpp:"Cpp",
        
-        total: 'Total votes',
-         rejected: 'Rejected ballot',
-        turnedOut: 'Turned out',
+        total: 'Valid Votes',
+         rejected: 'Spoilt ballot',
+        turnedOut: 'Total Vote Cast',
         action: 'Action'
     }
 ]

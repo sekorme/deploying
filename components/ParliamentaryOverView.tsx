@@ -49,6 +49,24 @@ const countRejectedBallots = data.filter(item => item.totalVoteCast > 0).length;
 const  allRejected = data.map((item:any) => item.totalVoteCast >0).length;
 const totalTurnedOut = data.reduce((acc:any, curr:any) => acc + curr.turnedOut,0)
 
+const ndcPercentage = ((totalNdcVotes / totalTurnedOut) * 100).toFixed(2);
+const nppPercentage = ((totalNppVotes / totalTurnedOut) *100).toFixed(2);
+const cppPercentage =((totalCppVotes / totalTurnedOut) * 100).toFixed(2)
+
+
+//find the hightsest number
+const highestVotes = Math.max(totalNdcVotes, totalCppVotes, totalNppVotes);
+const isNdcHighest = totalNdcVotes === highestVotes
+const isNppHighest = totalNppVotes === highestVotes
+const isCppHighest = totalCppVotes === highestVotes
+
+
+//finding the lowest number
+const lowestVotes = Math.min(totalNdcVotes, totalCppVotes, totalNppVotes)
+const isNdcLowest = totalNdcVotes === lowestVotes
+const isNppLowest = totalNppVotes === lowestVotes
+const isCppLowest = totalCppVotes === lowestVotes
+
 ;
   return (
     <>
@@ -68,9 +86,9 @@ const totalTurnedOut = data.reduce((acc:any, curr:any) => acc + curr.turnedOut,0
           </CardContent>
           <CardFooter>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mt-5 gap-4">
-              <CandidateCard image="tina.jpg" name="NDC Candidate" pvotes={totalNdcVotes}/>
-              <CandidateCard image="chris.jpg" name="NPP Candidate"  pvotes={totalNppVotes}/>
-              <CandidateCard image="tina.jpg" name="CPP Candidate" pvotes={totalCppVotes}/>
+              <CandidateCard image="tina.jpg" name="NDC Candidate" pvotes={totalNdcVotes} percentage={ndcPercentage} cls={isNdcHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isNdcLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
+              <CandidateCard image="chris.jpg" name="NPP Candidate"  pvotes={totalNppVotes} percentage={nppPercentage} cls={isNppHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isNppLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
+              <CandidateCard image="tina.jpg" name="CPP Candidate" pvotes={totalCppVotes} percentage={cppPercentage} cls={isCppHighest ? 'bg-green-600 p-2 text-center text-white rounded-full' : isCppLowest ? 'bg-red-500 text-white text-center rounded-full p-2': 'bg-yellow-500 text-center text-white rounded-full p-2'}/>
             </div>
           </CardFooter>
     </>

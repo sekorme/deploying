@@ -195,19 +195,21 @@ function handleEdit(id: string) {
                   <td className="p-4 border-b border-blue-gray-50">
                     <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
 
-                   {data.totalVoteCast}
+                   {data.turnedOut}
                     </p>
                   </td>
+                
                   <td className="p-4 border-b border-blue-gray-50">
                     <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
 
                     {data.rejectedBallot}
                     </p>
                   </td>
-                  <td className="p-4 border-b border-blue-gray-50">
+                  
+                    <td className="p-4 border-b border-blue-gray-50">
                     <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
 
-                   {data.turnedOut}
+                   {data.totalVoteCast}
                     </p>
                   </td>
                   {/* Repeat for other known numeric properties */}
