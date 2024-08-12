@@ -49,7 +49,8 @@ const LoginInterface = ({type}:{type:string}) => {
          setIsLoading(true)
         axios.post('/api/user',data)
         .then(()=>{
-          router.refresh()
+          toast.success("New User Added")
+          window.location.reload()
         })
         .catch((error)=>{console.log(error); toast.error("An error occured")})
         .finally(()=>{
