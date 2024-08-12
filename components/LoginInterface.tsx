@@ -47,9 +47,9 @@ const LoginInterface = ({type}:{type:string}) => {
         setIsLoading(true)
       if(type === "sign-up"){
          setIsLoading(true)
-        axios.post('http://localhost:3000/api/user',data)
+        axios.post('/api/user',data)
         .then(()=>{
-          router.push('/dashboard')
+          router.refresh()
         })
         .catch((error)=>{console.log(error); toast.error("An error occured")})
         .finally(()=>{
@@ -85,7 +85,7 @@ const LoginInterface = ({type}:{type:string}) => {
 
   return (
 
-    <section className="flex min-h-screen w-full max-w-[420px] flex-col justify-center gap-5 py-10 md:gap-8 shadow-3xl">
+    <section className={`${ type === "sign-up" ? "  flex  w-full max-w-[420px] flex-col justify-center gap-5  md:gap-8 shadow-3xl`" : "min-h-screen flex  w-full max-w-[420px] flex-col justify-center gap-5 "  } `}>
       
       
         <Card className="p-10 bg-white  shadow-2xl rounded-[10px] ">
@@ -96,19 +96,22 @@ const LoginInterface = ({type}:{type:string}) => {
           </header>
           <div className="flex flex-col gap-8 mt-4">
             <Input 
-             {...register('username')}
+             {...register('username',{required:true})}
          
              placeholder ="example@user.com"
            
             />
+            {errors.username && <span className="text-sm text-red-500">Username is required</span>}
+
             <Input 
              
              type="password"
               placeholder ="*****"
               
-             {...register('password')}
+             {...register('password',{required:true})}
              
             />
+            {errors.password && <span className="text-sm text-red-500">Password is required</span>}
             {
               type === 'sign-up' &&(
                 <>
@@ -117,24 +120,25 @@ const LoginInterface = ({type}:{type:string}) => {
             
               placeholder ="name"
               
-             {...register('name')}
+             {...register('name',{required:true})}
              
             />
+            {errors.name && <span className="text-sm text-red-500">Name is required</span>}
             <Input 
        
            
               placeholder ="phone"
               
-             {...register('phone')}
+             {...register('phone',{required: true})}
              
             />
-            
+            {errors.phone && <span className="text-sm text-red-500">Phone number is required</span>}
 </>
               )
             }
           
              <Button className="mt-6"  onClick={handleSubmit(onSubmit)} disabled ={isLoading} >
-            {type === "sign-in" ? isLoading ? "Accessing..." : "Sign In" : isLoading ? "Creating..." : "Sign Up"}
+            {type === "sign-in" ? isLoading ? "Accessing..." : "Sign In" : isLoading ? "Creating..." : "Add User"}
           </Button>
             <p className="flex items-center justify-center text-sm ">Protected By SekormeTech <ShieldMinus/></p>
           </div>

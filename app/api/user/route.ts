@@ -8,10 +8,13 @@ import Nextauth from "@/pages/api/auth/[...nextauth]";
 
 
 export async function POST( request: Request){
-     const session = await getServerSession(Nextauth)
+    
+    try{
+      const session = await getServerSession(Nextauth)
 
     if(!session) return NextResponse.json({message: "Unauthorized"}, {status: 401})
         
+    
     const body = await request.json()
 
     const {username, name, phone, password} = body;
@@ -32,6 +35,14 @@ export async function POST( request: Request){
     })
 
     return NextResponse.json(user)
+        
+
+    }
+    
+    catch(error){
+      return NextResponse.json({message: 'An unable to create new user'})
+    }
+    
 }
 
 
