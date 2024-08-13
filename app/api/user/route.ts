@@ -10,9 +10,9 @@ import Nextauth from "@/pages/api/auth/[...nextauth]";
 export async function POST( request: Request){
     
     try{
-      const session = await getServerSession(Nextauth)
+      //const session = await getServerSession(Nextauth)
 
-    if(!session) return NextResponse.json({message: "Unauthorized"}, {status: 401})
+    //if(!session) return NextResponse.json({message: "Unauthorized"}, {status: 401})
         
     
     const body = await request.json()
