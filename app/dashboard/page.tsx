@@ -11,15 +11,13 @@ import OverView  from '@/components/OverView'
 export default async function Dashboard() {
 
 
-
-
-
+console
 
   return (
     <>
   <Card className=" mt-20 xl:mt-5 contrast-10 brightness-120 bg-white  shadow-2xl ">
       <CardHeader>
-        <CardTitle>Dashbaord - Overview</CardTitle>
+        <CardTitle>Dashbaord - Overview </CardTitle>
         <CardDescription>Overview of the election results.</CardDescription>
       </CardHeader>
 

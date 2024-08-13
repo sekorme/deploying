@@ -3,9 +3,11 @@ import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 
 import { useRouter } from 'next/navigation'
-import { getSession} from '@/lib/server/getCurrentUser'
+import { getSession, getUser} from '@/lib/server/getCurrentUser'
 
-const Footer = ({ type='desktop'}: FooterProps) => {
+
+
+const Footer =  ({ type='desktop'}: FooterProps) => {
 
   const router= useRouter()
   const logOut = () =>{
@@ -13,7 +15,10 @@ const Footer = ({ type='desktop'}: FooterProps) => {
    
       router.push('/')
 }
-  
+
+
+
+
   return (
     <footer className="footer">
         <div className={type === 'mobile' ? 'footer_name_mobile' : 'footer_name'}>
@@ -23,7 +28,7 @@ const Footer = ({ type='desktop'}: FooterProps) => {
     <div className={type === 'mobile' ? 'footer_email_mobile' : 'footer_email'}>
      
         <p className="text-14 truncate font-normal text-gray-600">
-            alex@gmail.com
+           Developed By Sekorme
         </p>
     </div>
     <div className="footer_image" onClick={logOut}>
