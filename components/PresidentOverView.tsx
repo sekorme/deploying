@@ -79,9 +79,9 @@ const isCppLowest = totalCppVotes === lowestVotes
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center justify-center gap-1">
-                <DataCard  title="Total Vote" desc="Total Votes Cast" icon="/user-plus.svg" value={totalVotes} cl="bg-green-700 " tl="text-white" sp="text-white"/>
+                <DataCard  title="Total Vote" desc="Total Votes Cast" icon="/user-plus.svg" value={totalTurnedOut} cl="bg-green-700 " tl="text-white" sp="text-white"/>
                 <DataCard title="Rejected" desc="Reject Ballots" icon="/ban.svg" value={totalRejectedVotes} cl="bg-red-600" tl="text-white" sp="text-white"/>
-                <DataCard title="Valid Votes" desc="No. of valid votes" icon="/user-round-check.svg" value={totalTurnedOut} tl="text-green-600" />
+                <DataCard title="Valid Votes" desc="No. of valid votes" icon="/user-round-check.svg" value={totalVotes} tl="text-green-600" />
                 <DataCard title="P. Stations" desc="No. of Polling Stations" icon="/map-pinned.svg" value={countRejectedBallots +"/" + allRejected} cl="bg-gray-800" tl="text-white" sp="text-white"/>
               </div>
             </div>
