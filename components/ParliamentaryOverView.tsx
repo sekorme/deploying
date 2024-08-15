@@ -6,7 +6,23 @@ import DataCard from './DataCard'
 import CandidateCard from './CandidateCard'
 import toast  from 'react-hot-toast'
 import axios from 'axios'
+import Loader from "./Loader";
 
+
+import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import {useRouter} from 'next/navigation'
+
+
+
+const queryClient = new QueryClient()
+
+export default function Apps() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      < ParliamentaryOverView />
+    </QueryClientProvider>
+  )
+}
 
 async function fetchData() {
   const response = await fetch('/api/parliamentary', { method: 'GET', cache: 'no-store' });
@@ -16,25 +32,27 @@ async function fetchData() {
   return response.json();
 }
 
-const ParliamentaryOverView = () => {
- const [data, setData] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+function ParliamentaryOverView () {
+  const router = useRouter()
+  const {data , error, isLoading} = useQuery({
+   queryKey: ['parliamentary'],
+   queryFn: fetchData,
+ })
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const result = await fetchData();
-        setData(result);
-        setLoading(false);
-      } catch (err:any) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
+    const interval = setInterval(() => {
+      window.location.reload();
+    }, 30000); // 60000 milliseconds = 1 minute
 
-    getData();
+    return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);
+
+  
+if (isLoading){
+  return <div className="flex items-center justify-center"> <Loader/></div>
+}
+
+if(error) return null;
 
   
 
@@ -45,7 +63,7 @@ const totalNppVotes = data.reduce((acc:any, curr:any) => acc + curr.nppVotes, 0)
 const totalRejectedVotes = data.reduce((acc:any, curr:any) => acc + curr.rejectedBallot, 0);
 const totalVotes = data.reduce((acc:any, curr:any) => acc + curr.totalVoteCast, 0);
 const totalCppVotes = data.reduce((acc:any, curr:any) => acc + curr.cppVotes, 0);
-const countRejectedBallots = data.filter(item => item.totalVoteCast > 0).length;
+const countRejectedBallots = data.filter((item:any) => item.totalVoteCast > 0).length;
 const  allRejected = data.map((item:any) => item.totalVoteCast >0).length;
 const totalTurnedOut = data.reduce((acc:any, curr:any) => acc + curr.turnedOut,0)
 
@@ -95,4 +113,3 @@ const isCppLowest = totalCppVotes === lowestVotes
   )
 }
 
-export default ParliamentaryOverView

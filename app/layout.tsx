@@ -6,6 +6,7 @@ import ToasterProvider from "./providers/ToasterProvider";
 import AuthProvider from './providers/AuthProvider';
 import { redirect, useRouter } from "next/navigation";
 import  { getSession } from "../lib/server/getCurrentUser"
+import QueryClientProvider from "./QueryClientProvider";
 
 
 
@@ -37,12 +38,13 @@ export default async function RootLayout({
     <html lang="en">
    
       <body className={`bg-gray-200 ${inter.className}`}>
+        <QueryClientProvider>
         <AuthProvider>
        <ToasterProvider/>
         {children}
        </AuthProvider>
      
-
+     </QueryClientProvider>
         </body>
     </html>
   );
