@@ -46,7 +46,7 @@ const CollatePage = async() => {
             <CollateTable filterData={data2} type="presidential" />
           </CardContent>
           <CardFooter>
-            <Button>Save changes</Button>
+        
           </CardFooter>
         </Card>
       </TabsContent>

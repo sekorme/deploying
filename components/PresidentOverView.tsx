@@ -56,17 +56,17 @@ const totalNppVotes = data.reduce((acc:any, curr:any) => acc + curr.nppVotes, 0)
 const totalRejectedVotes = data.reduce((acc:any, curr:any) => acc + curr.rejectedBallot, 0);
 const totalVotes = data.reduce((acc:any, curr:any) => acc + curr.totalVoteCast, 0);
 const totalCppVotes = data.reduce((acc:any, curr:any) => acc + curr.cppVotes, 0);
-const countRejectedBallots = data.filter((item:any )=> item.totalVoteCast > 0).length;
-const  allRejected = data.map((item:any) => item.totalVoteCast >0).length;
+const resultsIn = data.filter((item:any )=> item.totalVoteCast > 0).length;
+const  allPollStations = data.map((item:any) => item.totalVoteCast >0).length;
 
-const totalTurnedOut = data.reduce((acc:any, curr:any) => acc + curr.turnedOut,0)
+const totalValidVotes = data.reduce((acc:any, curr:any) => acc + curr.turnedOut,0)
 
 
 
 //percenates
-const ndcPercentage = ((totalNdcVotes / totalTurnedOut) * 100).toFixed(2);
-const nppPercentage = ((totalNppVotes / totalTurnedOut) *100).toFixed(2);
-const cppPercentage =((totalCppVotes / totalTurnedOut) * 100).toFixed(2)
+const ndcPercentage = ((totalNdcVotes / totalValidVotes) * 100).toFixed(2);
+const nppPercentage = ((totalNppVotes / totalValidVotes) *100).toFixed(2);
+const cppPercentage =((totalCppVotes / totalValidVotes) * 100).toFixed(2)
 
 
 //find the hightsest number
@@ -91,10 +91,10 @@ const isCppLowest = totalCppVotes === lowestVotes
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center justify-center gap-1">
-                <DataCard  title="Total Vote" desc="Total Votes Cast" icon="/user-plus.svg" value={totalTurnedOut} cl="bg-green-700 " tl="text-white" sp="text-white"/>
+                <DataCard  title="Total Votes" desc="Total Votes Cast" icon="/user-plus.svg" value={totalVotes} cl="bg-green-700 " tl="text-white" sp="text-white"/>
                 <DataCard title="Rejected" desc="Reject Ballots" icon="/ban.svg" value={totalRejectedVotes} cl="bg-red-600" tl="text-white" sp="text-white"/>
-                <DataCard title="Valid Votes" desc="No. of valid votes" icon="/user-round-check.svg" value={totalVotes} tl="text-green-600" />
-                <DataCard title="P. Stations" desc="No. of Polling Stations" icon="/map-pinned.svg" value={countRejectedBallots +"/" + allRejected} cl="bg-gray-800" tl="text-white" sp="text-white"/>
+                <DataCard title="Valid Votes" desc="No. of valid votes" icon="/user-round-check.svg" value={totalValidVotes} tl="text-green-600" />
+                <DataCard title="P. Stations" desc="No. of Polling Stations" icon="/map-pinned.svg" value={resultsIn +"/" + allPollStations} cl="bg-gray-800" tl="text-white" sp="text-white"/>
               </div>
             </div>
           </CardContent>
