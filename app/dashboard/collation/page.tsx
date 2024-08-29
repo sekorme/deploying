@@ -38,6 +38,8 @@ const Collation =  () => {
           <Link href="/dashboard/collation/parliamentary">
          <Button className="bg-red-600 shadow-2xl">Create Parliamentary Polls</Button>
          </Link>
+
+        
         </div>
 
         <CollatePage />

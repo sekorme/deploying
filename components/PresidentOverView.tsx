@@ -63,13 +63,13 @@ const totalValidVotes = data.reduce((acc:any, curr:any) => acc + curr.turnedOut,
 
 
 
-//percenates
+//percentages
 const ndcPercentage = ((totalNdcVotes / totalValidVotes) * 100).toFixed(2);
 const nppPercentage = ((totalNppVotes / totalValidVotes) *100).toFixed(2);
 const cppPercentage =((totalCppVotes / totalValidVotes) * 100).toFixed(2)
 
 
-//find the hightsest number
+//find the highest number
 const highestVotes = Math.max(totalNdcVotes, totalCppVotes, totalNppVotes);
 const isNdcHighest = totalNdcVotes === highestVotes
 const isNppHighest = totalNppVotes === highestVotes
